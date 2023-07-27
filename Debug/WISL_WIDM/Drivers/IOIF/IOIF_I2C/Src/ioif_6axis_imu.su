@@ -1,0 +1,5 @@
+ioif_6axis_imu.c:3:26:IsDevReady_6Axis_IMU	16	static
+ioif_6axis_imu.c:8:26:Read_6Axis_IMU	32	static
+ioif_6axis_imu.c:13:26:Write_6Axis_IMU	32	static
+ioif_6axis_imu.c:18:19:Init_6Axis_IMU	56	static
+ioif_6axis_imu.c:43:19:Get_Value_6Axis_IMU	24	static

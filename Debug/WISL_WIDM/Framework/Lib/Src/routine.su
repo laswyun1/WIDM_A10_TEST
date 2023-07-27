@@ -1,0 +1,7 @@
+routine.c:4:21:Create_Routine_Entity	40	static
+routine.c:15:6:Init_Routine	24	static
+routine.c:26:5:Ent_Routines	24	static
+routine.c:45:5:Run_Routines	32	static
+routine.c:64:5:Ext_Routines	24	static
+routine.c:83:6:Clear_Routines	24	static
+routine.c:91:5:Push_Routine	24	static

@@ -1,0 +1,3 @@
+ioif_fdcan.c:11:6:Init_IOIF_Fdcan	32	static
+ioif_fdcan.c:59:5:Transmit_IOIF_Fdcan	24	static
+ioif_fdcan.c:68:6:HAL_FDCAN_RxFifo0Callback	16	static

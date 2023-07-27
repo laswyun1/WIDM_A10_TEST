@@ -1,0 +1,14 @@
+ioif_i2c_func.c:13:6:Delay_I2C	16	static
+ioif_i2c_func.c:15:19:Init_I2C1	8	static
+ioif_i2c_func.c:16:19:Init_I2C2	8	static
+ioif_i2c_func.c:17:19:Init_I2C3	8	static
+ioif_i2c_func.c:19:19:DeInit_I2C1	8	static
+ioif_i2c_func.c:20:19:DeInit_I2C2	8	static
+ioif_i2c_func.c:21:19:DeInit_I2C3	8	static
+ioif_i2c_func.c:23:19:IsDevReady_I2C1	16	static
+ioif_i2c_func.c:24:19:IsDevReady_I2C2	16	static
+ioif_i2c_func.c:25:19:IsDevReady_I2C3	16	static
+ioif_i2c_func.c:28:19:Mem_Write_I2C1	48	static
+ioif_i2c_func.c:42:19:Mem_Read_I2C1	48	static
+ioif_i2c_func.c:61:19:Mem_Write_I2C3	48	static
+ioif_i2c_func.c:75:19:Mem_Read_I2C3	48	static

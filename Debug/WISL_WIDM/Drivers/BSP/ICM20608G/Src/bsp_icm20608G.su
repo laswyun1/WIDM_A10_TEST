@@ -1,0 +1,6 @@
+bsp_icm20608G.c:3:18:Read_Reg_ICM20608G	32	static
+bsp_icm20608G.c:8:18:Write_Reg_ICM20608G	32	static
+bsp_icm20608G.c:13:18:Set_Reg_ICM20608G	32	static
+bsp_icm20608G.c:20:11:Set_Ioctx_ICM20608G	16	static
+bsp_icm20608G.c:36:11:Init_ICM20608G	24	static
+bsp_icm20608G.c:62:11:Get_Value_ICM20608G	56	static

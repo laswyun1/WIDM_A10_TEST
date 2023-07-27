@@ -1,0 +1,12 @@
+msg_data_object.c:10:23:Get_Msg_Data_Type_Info	24	static
+msg_data_object.c:47:6:Create_DOD	16	static
+msg_data_object.c:52:6:Create_PDO	32	static
+msg_data_object.c:65:6:Create_SDO	32	static
+msg_data_object.c:77:15:Find_PDO	16	static
+msg_data_object.c:82:15:Find_SDO	16	static
+msg_data_object.c:87:10:Set_PDO	16	static
+msg_data_object.c:94:10:Get_PDO	16	static
+msg_data_object.c:100:10:Call_SDO	16	static
+msg_data_object.c:112:6:Set_SDO_req	32	static
+msg_data_object.c:127:13:Get_SDO_res	24	static
+msg_data_object.c:137:10:Set_SDO_args	24	static

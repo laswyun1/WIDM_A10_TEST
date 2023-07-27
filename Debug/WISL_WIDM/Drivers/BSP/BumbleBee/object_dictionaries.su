@@ -1,0 +1,5 @@
+object_dictionaries.c:19:9:Convert_DataSize	16	static
+object_dictionaries.c:35:13:Assemble_SDO	24	static
+object_dictionaries.c:41:13:Assemble_PDO	24	static
+object_dictionaries.c:58:6:Create_SDOTable_ObjDictionary	8	static
+object_dictionaries.c:194:6:Create_PDOTable_ObjDictionary	8	static

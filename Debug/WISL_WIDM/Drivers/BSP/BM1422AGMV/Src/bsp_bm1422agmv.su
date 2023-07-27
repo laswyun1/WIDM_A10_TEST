@@ -1,0 +1,6 @@
+bsp_bm1422agmv.c:3:19:Read_Reg_BM1422AGMV	32	static
+bsp_bm1422agmv.c:8:19:Write_Reg_BM1422AGMV	32	static
+bsp_bm1422agmv.c:13:19:Set_Reg_BM1422AGMV	32	static
+bsp_bm1422agmv.c:20:12:Set_Ioctx_BM1422AGMV	16	static
+bsp_bm1422agmv.c:36:12:Init_BM1422AGMV	24	static
+bsp_bm1422agmv.c:67:12:Get_Value_BM1422AGMV	40	static
