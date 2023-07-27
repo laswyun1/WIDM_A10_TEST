@@ -82,7 +82,7 @@ static void Calculate_Initial_Thigh_Angle(Thigh_Angle_Params* t_thigh_angle_para
         else{
 
         	i--;
-        	err_chk++;
+        	err_chk = 50;
         }
     }
 
@@ -304,9 +304,15 @@ static int Run_Total_function()
 	Save_Previous_Value(&sensor_params, &thigh_angle_params, &gait_params);
 
 	uint8_t t_3axis_res = Get_Value_3Axis_IMU(&mag_data);
-	if (t_3axis_res != NO_ERROR) { Imu_Ctrl_Error_Type = IMU_HDLR_HAL_FUNC_ERROR; }
+	if (t_3axis_res != NO_ERROR){
+		Imu_Ctrl_Error_Type = IMU_HDLR_HAL_FUNC_ERROR;
+		err_chk = 11;
+	}
 	uint8_t t_6axis_res = Get_Value_6Axis_IMU(&acc_gyro_data);
-	if (t_6axis_res != NO_ERROR) { Imu_Ctrl_Error_Type = IMU_HDLR_HAL_FUNC_ERROR; }
+	if (t_6axis_res != NO_ERROR){
+		Imu_Ctrl_Error_Type = IMU_HDLR_HAL_FUNC_ERROR;
+		err_chk = 33;
+	}
 
 	Update_IMU_Raw_Value(&sensor_params, &acc_gyro_data, &mag_data, attach_plane);
 

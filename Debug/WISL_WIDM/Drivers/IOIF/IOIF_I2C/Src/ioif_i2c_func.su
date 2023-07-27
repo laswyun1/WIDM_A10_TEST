@@ -9,6 +9,6 @@ ioif_i2c_func.c:23:19:IsDevReady_I2C1	16	static
 ioif_i2c_func.c:24:19:IsDevReady_I2C2	16	static
 ioif_i2c_func.c:25:19:IsDevReady_I2C3	16	static
 ioif_i2c_func.c:28:19:Mem_Write_I2C1	48	static
-ioif_i2c_func.c:42:19:Mem_Read_I2C1	48	static
+ioif_i2c_func.c:42:19:Mem_Read_I2C1	40	static
 ioif_i2c_func.c:61:19:Mem_Write_I2C3	48	static
-ioif_i2c_func.c:75:19:Mem_Read_I2C3	48	static
+ioif_i2c_func.c:75:19:Mem_Read_I2C3	40	static

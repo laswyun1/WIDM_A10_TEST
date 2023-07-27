@@ -25,6 +25,10 @@ I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 I2C_HandleTypeDef hi2c3;
 
+DMA_HandleTypeDef hdma_i2c1_rx;
+DMA_HandleTypeDef hdma_i2c3_rx;
+
+
 /* I2C Configuration */
 void Delay_I2C(uint32_t t_ms_wait);
 

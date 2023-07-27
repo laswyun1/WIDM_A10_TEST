@@ -153,15 +153,15 @@ SECTIONS
   
   /* WIDM DMA variables -> attribute RAM D2 domain 0x30000000 ~ */
   /********************************************************************/
-/*
+
   .widm_dma (NOLOAD) :
   {
   	. = ABSOLUTE(0x30000000);
-    /* i2c1(Acc,Gyro) & i2c3(Mag) 
+    /* i2c1(Acc,Gyro) & i2c3(Mag) */
     *(.i2c1_rx_buff)
   	*(.i2c3_rx_buff)
   } >RAM_D2 
-*/
+
 
 /*
   .widm_dma (NOLOAD) :

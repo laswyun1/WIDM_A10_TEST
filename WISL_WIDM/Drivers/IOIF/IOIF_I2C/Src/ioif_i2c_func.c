@@ -3,11 +3,11 @@
 uint8_t i2c1_tx_buff;
 uint8_t i2c3_tx_buff;
 
-//uint8_t i2c1_rx_buff[I2C_BUFF_SIZE] __attribute__((section(".i2c1_rx_buff")));
-//uint8_t i2c3_rx_buff[I2C_BUFF_SIZE] __attribute__((section(".i2c3_rx_buff")));
+uint8_t i2c1_rx_buff[I2C_BUFF_SIZE] __attribute__((section(".i2c1_rx_buff")));
+uint8_t i2c3_rx_buff[I2C_BUFF_SIZE] __attribute__((section(".i2c3_rx_buff")));
 
-uint8_t i2c1_rx_buff[I2C_BUFF_SIZE];
-uint8_t i2c3_rx_buff[I2C_BUFF_SIZE];
+//uint8_t i2c1_rx_buff[I2C_BUFF_SIZE];
+//uint8_t i2c3_rx_buff[I2C_BUFF_SIZE];
 
 /* I2C Configure */
 void Delay_I2C(uint32_t t_ms_wait) {HAL_Delay(t_ms_wait);}
@@ -44,11 +44,11 @@ HAL_StatusTypeDef Mem_Read_I2C1(uint16_t t_dev_addr, uint16_t t_mem_addr, uint16
 	HAL_StatusTypeDef t_read_status = HAL_OK;
 
 	if ( hi2c1.State != HAL_I2C_STATE_BUSY ){
-		t_read_status = HAL_I2C_Mem_Read(&hi2c1, t_dev_addr, t_mem_addr, t_mem_size, i2c1_rx_buff, t_size, I2C1_TIMEOUT);
-//		t_read_status = HAL_I2C_Mem_Read_DMA(&hi2c1, t_dev_addr, t_mem_addr, t_mem_size, i2c1_rx_buff, t_size);
+//		t_read_status = HAL_I2C_Mem_Read(&hi2c1, t_dev_addr, t_mem_addr, t_mem_size, i2c1_rx_buff, t_size, I2C1_TIMEOUT);
+		t_read_status = HAL_I2C_Mem_Read_DMA(&hi2c1, t_dev_addr, t_mem_addr, t_mem_size, i2c1_rx_buff, t_size);
 //		t_read_status = HAL_I2C_Master_Receive_DMA(&hi2c1, t_dev_addr, i2c1_rx_buff, t_size);
-//		while (HAL_DMA_GetState(&hdma_i2c1_rx) != HAL_DMA_STATE_READY){
-//		}
+		while (HAL_DMA_GetState(&hdma_i2c1_rx) != HAL_DMA_STATE_READY){
+		}
 		memcpy(t_data, i2c1_rx_buff, t_size);
 	} else {
 		return HAL_BUSY;
@@ -77,8 +77,10 @@ HAL_StatusTypeDef Mem_Read_I2C3(uint16_t t_dev_addr, uint16_t t_mem_addr, uint16
 	HAL_StatusTypeDef t_read_status = HAL_OK;
 
 	if ( hi2c3.State != HAL_I2C_STATE_BUSY ){
-//		t_read_status = HAL_I2C_Mem_Read_DMA(&hi2c3, t_dev_addr, t_mem_addr, t_mem_size, i2c3_rx_buff, t_size);
-		t_read_status = HAL_I2C_Mem_Read(&hi2c3, t_dev_addr, t_mem_addr, t_mem_size, i2c3_rx_buff, t_size, I2C3_TIMEOUT);
+		t_read_status = HAL_I2C_Mem_Read_DMA(&hi2c3, t_dev_addr, t_mem_addr, t_mem_size, i2c3_rx_buff, t_size);
+//		t_read_status = HAL_I2C_Mem_Read(&hi2c3, t_dev_addr, t_mem_addr, t_mem_size, i2c3_rx_buff, t_size, I2C3_TIMEOUT);
+		while (HAL_DMA_GetState(&hdma_i2c3_rx) != HAL_DMA_STATE_READY){
+		}
 		memcpy(t_data, i2c3_rx_buff, t_size);
 	} else {
 		return HAL_BUSY;
