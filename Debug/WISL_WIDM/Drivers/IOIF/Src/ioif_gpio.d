@@ -1,6 +1,6 @@
 WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o: \
  ../WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.c \
- C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/Inc/ioif_gpio.h \
+ C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/Inc/ioif_gpio.h \
  ../Core/Inc/main.h ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -34,7 +34,7 @@ WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o: \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
  ../Core/Inc/gpio.h ../Core/Inc/main.h
 
-C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/Inc/ioif_gpio.h:
+C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/Inc/ioif_gpio.h:
 
 ../Core/Inc/main.h:
 

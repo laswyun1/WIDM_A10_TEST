@@ -1148,7 +1148,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x16 ./Core/Src/syscalls.o
  .debug_macro   0x0000000000000000       0xce ./Core/Src/syscalls.o
  .debug_line    0x0000000000000000      0x802 ./Core/Src/syscalls.o
- .debug_str     0x0000000000000000     0x8f22 ./Core/Src/syscalls.o
+ .debug_str     0x0000000000000000     0x8f16 ./Core/Src/syscalls.o
  .comment       0x0000000000000000       0x54 ./Core/Src/syscalls.o
  .debug_frame   0x0000000000000000      0x2ac ./Core/Src/syscalls.o
  .ARM.attributes
@@ -2002,7 +2002,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o
  .debug_line    0x0000000000000000     0x2734 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o
- .debug_str     0x0000000000000000   0x161350 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o
+ .debug_str     0x0000000000000000   0x161344 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o
  .debug_frame   0x0000000000000000      0x2b4 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma.o
  .ARM.attributes
@@ -2157,7 +2157,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o
  .debug_line    0x0000000000000000     0x1186 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o
- .debug_str     0x0000000000000000   0x160d03 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o
+ .debug_str     0x0000000000000000   0x160cf7 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o
  .debug_frame   0x0000000000000000      0x174 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_dma_ex.o
  .ARM.attributes
@@ -2312,7 +2312,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o
  .debug_line    0x0000000000000000      0xcc5 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o
- .debug_str     0x0000000000000000   0x160a8c ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o
+ .debug_str     0x0000000000000000   0x160a80 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o
  .debug_frame   0x0000000000000000      0x174 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_exti.o
  .ARM.attributes
@@ -2762,7 +2762,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o
  .debug_line    0x0000000000000000      0xc73 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o
- .debug_str     0x0000000000000000   0x160ab8 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o
+ .debug_str     0x0000000000000000   0x160aac ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o
  .debug_frame   0x0000000000000000      0x1fc ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash.o
  .ARM.attributes
@@ -2952,7 +2952,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o
  .debug_line    0x0000000000000000      0xed5 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o
- .debug_str     0x0000000000000000   0x160d11 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o
+ .debug_str     0x0000000000000000   0x160d05 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o
  .debug_frame   0x0000000000000000      0x3f4 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_flash_ex.o
  .ARM.attributes
@@ -3248,7 +3248,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o
  .debug_line    0x0000000000000000      0x9af ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o
- .debug_str     0x0000000000000000   0x1608ba ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o
+ .debug_str     0x0000000000000000   0x1608ae ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o
  .debug_frame   0x0000000000000000      0x1bc ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hsem.o
  .ARM.attributes
@@ -3817,7 +3817,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o
  .debug_line    0x0000000000000000     0x1464 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o
- .debug_str     0x0000000000000000   0x160f4a ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o
+ .debug_str     0x0000000000000000   0x160f3e ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o
  .debug_frame   0x0000000000000000      0x34c ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_mdma.o
  .ARM.attributes
@@ -3988,7 +3988,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o
  .debug_macro   0x0000000000000000      0x5a0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o
  .debug_line    0x0000000000000000      0xa58 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o
- .debug_str     0x0000000000000000   0x160be7 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o
+ .debug_str     0x0000000000000000   0x160bdb ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o
  .comment       0x0000000000000000       0x54 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o
  .debug_frame   0x0000000000000000      0x254 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr.o
  .ARM.attributes
@@ -5234,7 +5234,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xd0 ./WISL_WIDM/Drivers/BSP/BumbleBee/BumbleBee.o
  .debug_macro   0x0000000000000000       0x5e ./WISL_WIDM/Drivers/BSP/BumbleBee/BumbleBee.o
  .debug_line    0x0000000000000000      0xa2b ./WISL_WIDM/Drivers/BSP/BumbleBee/BumbleBee.o
- .debug_str     0x0000000000000000     0x9506 ./WISL_WIDM/Drivers/BSP/BumbleBee/BumbleBee.o
+ .debug_str     0x0000000000000000     0x94fa ./WISL_WIDM/Drivers/BSP/BumbleBee/BumbleBee.o
  .comment       0x0000000000000000       0x54 ./WISL_WIDM/Drivers/BSP/BumbleBee/BumbleBee.o
  .debug_frame   0x0000000000000000      0x35c ./WISL_WIDM/Drivers/BSP/BumbleBee/BumbleBee.o
  .ARM.attributes
@@ -6083,8 +6083,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x29f ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
  .debug_macro   0x0000000000000000      0x5a0 ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
  .debug_macro   0x0000000000000000      0x124 ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
- .debug_line    0x0000000000000000      0xa56 ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
- .debug_str     0x0000000000000000   0x160f32 ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
+ .debug_line    0x0000000000000000      0xa4a ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
+ .debug_str     0x0000000000000000   0x160f26 ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
  .comment       0x0000000000000000       0x54 ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
  .debug_frame   0x0000000000000000      0x2c0 ./WISL_WIDM/Drivers/IOIF/Src/ioif_gpio.o
  .ARM.attributes
@@ -7043,8 +7043,8 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x1c ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
  .debug_macro   0x0000000000000000       0x34 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
  .debug_macro   0x0000000000000000       0x6a ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
- .debug_line    0x0000000000000000     0x1a4c ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
- .debug_str     0x0000000000000000   0x168c1a ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
+ .debug_line    0x0000000000000000     0x19ec ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
+ .debug_str     0x0000000000000000   0x168c0e ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
  .comment       0x0000000000000000       0x54 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
  .debug_frame   0x0000000000000000      0x5e0 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
  .ARM.attributes
@@ -9400,113 +9400,114 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x000000000003bfe5       0xbe ./WISL_WIDM/Framework/Lib/Src/state_machine.o
  .debug_macro   0x000000000003c0a3      0x25b ./WISL_WIDM/Framework/Lib/Src/task.o
 
-.debug_line     0x0000000000000000    0x20fd3
+.debug_line     0x0000000000000000    0x20e53
  .debug_line    0x0000000000000000      0x8f5 ./Core/Src/fdcan.o
  .debug_line    0x00000000000008f5      0x885 ./Core/Src/gpio.o
  .debug_line    0x000000000000117a      0x971 ./Core/Src/i2c.o
- .debug_line    0x0000000000001aeb     0x1010 ./Core/Src/main.o
- .debug_line    0x0000000000002afb      0x83e ./Core/Src/stm32h7xx_hal_msp.o
- .debug_line    0x0000000000003339      0x9aa ./Core/Src/stm32h7xx_it.o
- .debug_line    0x0000000000003ce3      0x4f8 ./Core/Src/sysmem.o
- .debug_line    0x00000000000041db      0x9f2 ./Core/Src/system_stm32h7xx.o
- .debug_line    0x0000000000004bcd      0x90f ./Core/Src/tim.o
- .debug_line    0x00000000000054dc       0x88 ./Core/Startup/startup_stm32h750vbtx.o
- .debug_line    0x0000000000005564      0xded ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
- .debug_line    0x0000000000006351      0xdf3 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o
- .debug_line    0x0000000000007144     0x2736 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.o
- .debug_line    0x000000000000987a      0xcb0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o
- .debug_line    0x000000000000a52a     0x3803 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o
- .debug_line    0x000000000000dd2d      0xa5d ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o
- .debug_line    0x000000000000e78a      0xf07 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o
- .debug_line    0x000000000000f691     0x1358 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o
- .debug_line    0x00000000000109e9     0x1b06 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o
- .debug_line    0x00000000000124ef     0x3eab ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o
- .debug_line    0x000000000001639a     0x1d88 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o
- .debug_line    0x0000000000018122      0x704 ./WISL_WIDM/Drivers/BSP/BM1422AGMV/Src/bsp_bm1422agmv.o
- .debug_line    0x0000000000018826      0x65a ./WISL_WIDM/Drivers/BSP/BumbleBee/object_dictionaries.o
- .debug_line    0x0000000000018e80      0x733 ./WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.o
- .debug_line    0x00000000000195b3      0xaae ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_3axis_imu.o
- .debug_line    0x000000000001a061      0xaab ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o
- .debug_line    0x000000000001ab0c      0xa7f ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
- .debug_line    0x000000000001b58b      0x9c9 ./WISL_WIDM/Drivers/IOIF/Src/ioif_fdcan.o
- .debug_line    0x000000000001bf54      0xc60 ./WISL_WIDM/Drivers/IOIF/Src/ioif_tim.o
- .debug_line    0x000000000001cbb4     0x1454 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/imu_ctrl_task.o
- .debug_line    0x000000000001e008     0x10a3 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/widm_calculation.o
- .debug_line    0x000000000001f0ab      0x965 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_data_object.o
- .debug_line    0x000000000001fa10      0x80c ./WISL_WIDM/Framework/Lib/Src/routine.o
- .debug_line    0x000000000002021c      0x701 ./WISL_WIDM/Framework/Lib/Src/state_machine.o
- .debug_line    0x000000000002091d      0x6b6 ./WISL_WIDM/Framework/Lib/Src/task.o
+ .debug_line    0x0000000000001aeb      0xfb0 ./Core/Src/main.o
+ .debug_line    0x0000000000002a9b      0x83e ./Core/Src/stm32h7xx_hal_msp.o
+ .debug_line    0x00000000000032d9      0x9aa ./Core/Src/stm32h7xx_it.o
+ .debug_line    0x0000000000003c83      0x4f8 ./Core/Src/sysmem.o
+ .debug_line    0x000000000000417b      0x9f2 ./Core/Src/system_stm32h7xx.o
+ .debug_line    0x0000000000004b6d      0x90f ./Core/Src/tim.o
+ .debug_line    0x000000000000547c       0x88 ./Core/Startup/startup_stm32h750vbtx.o
+ .debug_line    0x0000000000005504      0xded ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
+ .debug_line    0x00000000000062f1      0xdf3 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o
+ .debug_line    0x00000000000070e4     0x2736 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.o
+ .debug_line    0x000000000000981a      0xcb0 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o
+ .debug_line    0x000000000000a4ca     0x3803 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o
+ .debug_line    0x000000000000dccd      0xa5d ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o
+ .debug_line    0x000000000000e72a      0xf07 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o
+ .debug_line    0x000000000000f631     0x1358 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o
+ .debug_line    0x0000000000010989     0x1b06 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o
+ .debug_line    0x000000000001248f     0x3eab ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o
+ .debug_line    0x000000000001633a     0x1d88 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o
+ .debug_line    0x00000000000180c2      0x6f8 ./WISL_WIDM/Drivers/BSP/BM1422AGMV/Src/bsp_bm1422agmv.o
+ .debug_line    0x00000000000187ba      0x65a ./WISL_WIDM/Drivers/BSP/BumbleBee/object_dictionaries.o
+ .debug_line    0x0000000000018e14      0x727 ./WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.o
+ .debug_line    0x000000000001953b      0xa8a ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_3axis_imu.o
+ .debug_line    0x0000000000019fc5      0xa87 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o
+ .debug_line    0x000000000001aa4c      0xa73 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
+ .debug_line    0x000000000001b4bf      0x9bd ./WISL_WIDM/Drivers/IOIF/Src/ioif_fdcan.o
+ .debug_line    0x000000000001be7c      0xc54 ./WISL_WIDM/Drivers/IOIF/Src/ioif_tim.o
+ .debug_line    0x000000000001cad0     0x13f4 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/imu_ctrl_task.o
+ .debug_line    0x000000000001dec4     0x10a3 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/widm_calculation.o
+ .debug_line    0x000000000001ef67      0x94d ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_data_object.o
+ .debug_line    0x000000000001f8b4      0x800 ./WISL_WIDM/Framework/Lib/Src/routine.o
+ .debug_line    0x00000000000200b4      0x6f5 ./WISL_WIDM/Framework/Lib/Src/state_machine.o
+ .debug_line    0x00000000000207a9      0x6aa ./WISL_WIDM/Framework/Lib/Src/task.o
 
-.debug_str      0x0000000000000000   0x17170c
- .debug_str     0x0000000000000000   0x161905 ./Core/Src/fdcan.o
-                                     0x161f10 (size before relaxing)
- .debug_str     0x0000000000161905       0x48 ./Core/Src/gpio.o
-                                     0x160ede (size before relaxing)
- .debug_str     0x000000000016194d      0x58b ./Core/Src/i2c.o
-                                     0x16201c (size before relaxing)
- .debug_str     0x0000000000161ed8     0x6af0 ./Core/Src/main.o
-                                     0x168610 (size before relaxing)
- .debug_str     0x00000000001689c8       0x2c ./Core/Src/stm32h7xx_hal_msp.o
-                                     0x160e41 (size before relaxing)
- .debug_str     0x00000000001689f4      0x148 ./Core/Src/stm32h7xx_it.o
-                                     0x161ad8 (size before relaxing)
- .debug_str     0x0000000000168b3c      0x4e9 ./Core/Src/sysmem.o
-                                       0x62f5 (size before relaxing)
- .debug_str     0x0000000000169025      0x208 ./Core/Src/system_stm32h7xx.o
-                                     0x160c3a (size before relaxing)
- .debug_str     0x000000000016922d      0x119 ./Core/Src/tim.o
-                                     0x161da0 (size before relaxing)
- .debug_str     0x0000000000169346       0x75 ./Core/Startup/startup_stm32h750vbtx.o
- .debug_str     0x00000000001693bb      0x740 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
-                                     0x161a77 (size before relaxing)
- .debug_str     0x0000000000169afb      0x315 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o
-                                     0x16157f (size before relaxing)
- .debug_str     0x0000000000169e10     0x1a7a ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.o
-                                     0x1628e2 (size before relaxing)
- .debug_str     0x000000000016b88a      0x12f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o
-                                     0x160c32 (size before relaxing)
- .debug_str     0x000000000016b9b9      0xde1 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o
-                                     0x161bfe (size before relaxing)
- .debug_str     0x000000000016c79a       0xb8 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o
-                                     0x161042 (size before relaxing)
- .debug_str     0x000000000016c852      0x631 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o
-                                     0x1610c1 (size before relaxing)
- .debug_str     0x000000000016ce83      0x26c ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o
-                                     0x160f96 (size before relaxing)
- .debug_str     0x000000000016d0ef      0x649 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o
-                                     0x161448 (size before relaxing)
- .debug_str     0x000000000016d738      0xdfe ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o
-                                     0x161ccc (size before relaxing)
- .debug_str     0x000000000016e536      0x604 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o
-                                     0x1615b2 (size before relaxing)
- .debug_str     0x000000000016eb3a      0x1a4 ./WISL_WIDM/Drivers/BSP/BM1422AGMV/Src/bsp_bm1422agmv.o
-                                       0x822c (size before relaxing)
- .debug_str     0x000000000016ecde     0x1750 ./WISL_WIDM/Drivers/BSP/BumbleBee/object_dictionaries.o
-                                       0x8ae3 (size before relaxing)
- .debug_str     0x000000000017042e      0x143 ./WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.o
-                                       0x8096 (size before relaxing)
- .debug_str     0x0000000000170571       0xd7 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_3axis_imu.o
-                                     0x16256f (size before relaxing)
- .debug_str     0x0000000000170648       0x9f ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o
-                                     0x1623f6 (size before relaxing)
- .debug_str     0x00000000001706e7      0x131 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
-                                     0x161483 (size before relaxing)
- .debug_str     0x0000000000170818       0x87 ./WISL_WIDM/Drivers/IOIF/Src/ioif_fdcan.o
-                                     0x161bc0 (size before relaxing)
- .debug_str     0x000000000017089f      0x246 ./WISL_WIDM/Drivers/IOIF/Src/ioif_tim.o
-                                     0x161697 (size before relaxing)
- .debug_str     0x0000000000170ae5      0x571 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/imu_ctrl_task.o
-                                     0x1688bc (size before relaxing)
- .debug_str     0x0000000000171056      0x3b4 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/widm_calculation.o
-                                     0x1615a4 (size before relaxing)
- .debug_str     0x000000000017140a      0x121 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_data_object.o
-                                       0xa1cf (size before relaxing)
- .debug_str     0x000000000017152b       0xab ./WISL_WIDM/Framework/Lib/Src/routine.o
-                                       0x7a25 (size before relaxing)
- .debug_str     0x00000000001715d6       0xaa ./WISL_WIDM/Framework/Lib/Src/state_machine.o
-                                       0x6947 (size before relaxing)
- .debug_str     0x0000000000171680       0x8c ./WISL_WIDM/Framework/Lib/Src/task.o
-                                       0x8d6c (size before relaxing)
+.debug_str      0x0000000000000000   0x1716c1
+ .debug_str     0x0000000000000000   0x1618f9 ./Core/Src/fdcan.o
+                                     0x161f04 (size before relaxing)
+ .debug_str     0x00000000001618f9       0x48 ./Core/Src/gpio.o
+                                     0x160ed2 (size before relaxing)
+ .debug_str     0x0000000000161941      0x58b ./Core/Src/i2c.o
+                                     0x162010 (size before relaxing)
+ .debug_str     0x0000000000161ecc     0x6af0 ./Core/Src/main.o
+                                     0x168604 (size before relaxing)
+ .debug_str     0x00000000001689bc       0x2c ./Core/Src/stm32h7xx_hal_msp.o
+                                     0x160e35 (size before relaxing)
+ .debug_str     0x00000000001689e8      0x148 ./Core/Src/stm32h7xx_it.o
+                                     0x161acc (size before relaxing)
+ .debug_str     0x0000000000168b30      0x4e9 ./Core/Src/sysmem.o
+                                       0x62e9 (size before relaxing)
+ .debug_str     0x0000000000169019      0x208 ./Core/Src/system_stm32h7xx.o
+                                     0x160c2e (size before relaxing)
+ .debug_str     0x0000000000169221      0x119 ./Core/Src/tim.o
+                                     0x161d94 (size before relaxing)
+ .debug_str     0x000000000016933a       0x36 ./Core/Startup/startup_stm32h750vbtx.o
+                                         0x71 (size before relaxing)
+ .debug_str     0x0000000000169370      0x740 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
+                                     0x161a6b (size before relaxing)
+ .debug_str     0x0000000000169ab0      0x315 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o
+                                     0x161573 (size before relaxing)
+ .debug_str     0x0000000000169dc5     0x1a7a ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.o
+                                     0x1628d6 (size before relaxing)
+ .debug_str     0x000000000016b83f      0x12f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o
+                                     0x160c26 (size before relaxing)
+ .debug_str     0x000000000016b96e      0xde1 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o
+                                     0x161bf2 (size before relaxing)
+ .debug_str     0x000000000016c74f       0xb8 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o
+                                     0x161036 (size before relaxing)
+ .debug_str     0x000000000016c807      0x631 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o
+                                     0x1610b5 (size before relaxing)
+ .debug_str     0x000000000016ce38      0x26c ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o
+                                     0x160f8a (size before relaxing)
+ .debug_str     0x000000000016d0a4      0x649 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o
+                                     0x16143c (size before relaxing)
+ .debug_str     0x000000000016d6ed      0xdfe ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o
+                                     0x161cc0 (size before relaxing)
+ .debug_str     0x000000000016e4eb      0x604 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o
+                                     0x1615a6 (size before relaxing)
+ .debug_str     0x000000000016eaef      0x1a4 ./WISL_WIDM/Drivers/BSP/BM1422AGMV/Src/bsp_bm1422agmv.o
+                                       0x8220 (size before relaxing)
+ .debug_str     0x000000000016ec93     0x1750 ./WISL_WIDM/Drivers/BSP/BumbleBee/object_dictionaries.o
+                                       0x8ad7 (size before relaxing)
+ .debug_str     0x00000000001703e3      0x143 ./WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.o
+                                       0x808a (size before relaxing)
+ .debug_str     0x0000000000170526       0xd7 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_3axis_imu.o
+                                     0x162563 (size before relaxing)
+ .debug_str     0x00000000001705fd       0x9f ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o
+                                     0x1623ea (size before relaxing)
+ .debug_str     0x000000000017069c      0x131 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
+                                     0x161477 (size before relaxing)
+ .debug_str     0x00000000001707cd       0x87 ./WISL_WIDM/Drivers/IOIF/Src/ioif_fdcan.o
+                                     0x161bb4 (size before relaxing)
+ .debug_str     0x0000000000170854      0x246 ./WISL_WIDM/Drivers/IOIF/Src/ioif_tim.o
+                                     0x16168b (size before relaxing)
+ .debug_str     0x0000000000170a9a      0x571 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/imu_ctrl_task.o
+                                     0x1688b0 (size before relaxing)
+ .debug_str     0x000000000017100b      0x3b4 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/widm_calculation.o
+                                     0x161598 (size before relaxing)
+ .debug_str     0x00000000001713bf      0x121 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_data_object.o
+                                       0xa1c3 (size before relaxing)
+ .debug_str     0x00000000001714e0       0xab ./WISL_WIDM/Framework/Lib/Src/routine.o
+                                       0x7a19 (size before relaxing)
+ .debug_str     0x000000000017158b       0xaa ./WISL_WIDM/Framework/Lib/Src/state_machine.o
+                                       0x693b (size before relaxing)
+ .debug_str     0x0000000000171635       0x8c ./WISL_WIDM/Framework/Lib/Src/task.o
+                                       0x8d60 (size before relaxing)
 
 .comment        0x0000000000000000       0x53
  .comment       0x0000000000000000       0x53 ./Core/Src/fdcan.o

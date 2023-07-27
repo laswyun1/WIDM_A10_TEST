@@ -1,9 +1,9 @@
 WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o: \
  ../WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.c \
- C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_6axis_imu.h \
- C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G.h \
- C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G_regmap.h \
- C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_i2c_func.h \
+ C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_6axis_imu.h \
+ C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G.h \
+ C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G_regmap.h \
+ C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_i2c_func.h \
  ../Core/Inc/main.h ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -36,15 +36,15 @@ WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o: \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_tim_ex.h \
  ../Core/Inc/i2c.h ../Core/Inc/main.h \
- C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/BumbleBee/error_dictionary.h
+ C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/BumbleBee/error_dictionary.h
 
-C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_6axis_imu.h:
+C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_6axis_imu.h:
 
-C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G.h:
+C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G.h:
 
-C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G_regmap.h:
+C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/ICM20608G/Inc/bsp_icm20608G_regmap.h:
 
-C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_i2c_func.h:
+C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/IOIF/IOIF_I2C/Inc/ioif_i2c_func.h:
 
 ../Core/Inc/main.h:
 
@@ -114,4 +114,4 @@ C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drive
 
 ../Core/Inc/main.h:
 
-C:/Users/Seung-WonYun/STM32CubeIDE/workspace_1.8.0/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/BumbleBee/error_dictionary.h:
+C:/Users/Seung-WonYun/Documents/GitHub/WIDM_A10_TEST/WISL_WIDM/Drivers/BSP/BumbleBee/error_dictionary.h:
