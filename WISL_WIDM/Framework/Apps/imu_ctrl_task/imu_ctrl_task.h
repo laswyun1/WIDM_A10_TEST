@@ -51,12 +51,16 @@ Gait_Params gait_params;
 Fuzzy_Params fuzzy_params;
 Thigh_Angle_Params thigh_angle_params;
 Threshold_Params th_params;
+Plantar_Params plantar_params;
+Dorsi_Params dorsi_params;
 Assist_Params assist_params;
+
 
 float wc_test;
 uint8_t walking;
 AttachPlane attach_plane;
 float thigh_angle_tvcf_demo;
+uint8_t err_chk;
 
 /*
  
@@ -69,16 +73,9 @@ float thigh_angle_tvcf_demo;
  
 */
 
-//uint8_t test_res_3axis;
-//uint8_t test_res_6axis;
-//
-//uint8_t i2c_3axis_res;
-//uint8_t i2c_6axis_res;
-
-//uint32_t imu_ctrl_loop_time_cnt_1;
-//uint32_t imu_ctrl_loop_time_cnt_2;
-
-//uint32_t imu_ctrl_task_us;
+uint32_t imu_ctrl_loop_time_cnt_1;
+uint32_t imu_ctrl_loop_time_cnt_2;
+uint32_t imu_ctrl_task_us;
 
 void Init_Imu_Ctrl(void);
 void Run_Imu_Ctrl(void);

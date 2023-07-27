@@ -12,7 +12,7 @@
 */
 
 /* Set Specific Value */
-void Set_Init_Parameters(Normalization_Params* t_norm_params, Gait_Params* t_gait_params, Fuzzy_Params* t_fuzzy_params, Threshold_Params* t_th_params, Assist_Params* t_assist_params)
+void Set_Init_Parameters(Normalization_Params* t_norm_params, Gait_Params* t_gait_params, Fuzzy_Params* t_fuzzy_params, Threshold_Params* t_th_params, Plantar_Params* t_plantar_params, Dorsi_Params* t_dorsi_params, Assist_Params* t_assist_params)
 {
 	t_norm_params->A_deg = 30.0; //30
 	t_norm_params->A_vel = 400.0; //400
@@ -33,36 +33,39 @@ void Set_Init_Parameters(Normalization_Params* t_norm_params, Gait_Params* t_gai
 	t_th_params->deg_th_stop 	= 5.0;
 	t_th_params->vel_th_stop 	= 3.0;
 
-	t_assist_params->t_P_start	 	 = 35;
-	t_assist_params->t_D_start 	 = 50;
-	t_assist_params->t_r_P_end 	 = 35;
-	t_assist_params->t_c_P_end 	 = 55;
-	t_assist_params->t_f_P_end 	 = 60;
-	t_assist_params->t_r_D_end 	 = 53;
-	t_assist_params->t_c_D_end 	 = 70;
-	t_assist_params->t_f_D_end 	 = 80;
-	t_assist_params->t_r_P 		 = 100;
-	t_assist_params->t_c_P 		 = 400;
-	t_assist_params->t_f_P 		 = 100;
-	t_assist_params->t_r_D 		 = 100;
-	t_assist_params->t_c_D 		 = 400;
-	t_assist_params->t_f_D 		 = 100;
+	t_plantar_params->t_P_start	  = 35;
+	t_plantar_params->t_r_P_end   = 35;
+	t_plantar_params->t_c_P_end   = 55;
+	t_plantar_params->t_f_P_end   = 60;
+	t_plantar_params->t_r_P       = 100;
+	t_plantar_params->t_c_P 	  = 400;
+	t_plantar_params->t_f_P 	  = 100;
+	t_plantar_params->Amplitude_P = 60.0;
+
+	t_dorsi_params->t_D_start 	  = 50;
+	t_dorsi_params->t_r_D_end 	  = 53;
+	t_dorsi_params->t_c_D_end 	  = 70;
+	t_dorsi_params->t_f_D_end 	  = 80;
+	t_dorsi_params->t_r_D 		  = 100;
+	t_dorsi_params->t_c_D 		  = 400;
+	t_dorsi_params->t_f_D 		  = 100;
+	t_dorsi_params->Amplitude_D   = 60.0;
+
 	t_assist_params->t_r_limit 	 = 20;
 	t_assist_params->t_f_limit 	 = 20;
 	t_assist_params->ref_shape 	 = TRAPEZOIDAL;
-	t_assist_params->Amplitude_P = 60.0;
-	t_assist_params->Amplitude_D = 60.0;
+
 }
 
 /*
- 
-   ____                    ____                 _                  __     __    _            
-  / ___|  __ ___   _____  |  _ \ _ __ _____   _(_) ___  _   _ ___  \ \   / /_ _| |_   _  ___ 
+
+   ____                    ____                 _                  __     __    _
+  / ___|  __ ___   _____  |  _ \ _ __ _____   _(_) ___  _   _ ___  \ \   / /_ _| |_   _  ___
   \___ \ / _` \ \ / / _ \ | |_) | '__/ _ \ \ / / |/ _ \| | | / __|  \ \ / / _` | | | | |/ _ \
    ___) | (_| |\ V /  __/ |  __/| | |  __/\ V /| | (_) | |_| \__ \   \ V / (_| | | |_| |  __/
   |____/ \__,_| \_/ \___| |_|   |_|  \___| \_/ |_|\___/ \__,_|___/    \_/ \__,_|_|\__,_|\___|
-                                                                                             
- 
+
+
 */
 
 void Save_Previous_Value(Sensor_Params* t_sensor_params, Thigh_Angle_Params* t_thigh_angle_params, Gait_Params* t_gait_params)
@@ -84,14 +87,14 @@ void Save_Previous_Value(Sensor_Params* t_sensor_params, Thigh_Angle_Params* t_t
 }
 
 /*
- 
-   _____                      _                _      
-  |  ___|   _ _________   _  | |    ___   __ _(_) ___ 
+
+   _____                      _                _
+  |  ___|   _ _________   _  | |    ___   __ _(_) ___
   | |_ | | | |_  /_  / | | | | |   / _ \ / _` | |/ __|
-  |  _|| |_| |/ / / /| |_| | | |__| (_) | (_| | | (__ 
+  |  _|| |_| |/ / / /| |_| | | |__| (_) | (_| | | (__
   |_|   \__,_/___/___|\__, | |_____\___/ \__, |_|\___|
-                      |___/              |___/        
- 
+                      |___/              |___/
+
 */
 
 float Calculate_Square_Root_Sum(float t_x, float t_y)
@@ -103,13 +106,14 @@ float Calculate_Absolute_Value_Float(float t_value)
 {
 	return fabs(t_value);
 }
+
 float Calculate_Delta(float t_current, float t_previous)
 {
 	return (t_current - t_previous) / IMU_CONTROL_PERIOD;
 }
 
 void Calculate_xbar_Update_mu(float t_var_i, float t_fuzzy_input, float* t_mu)
-{	
+{
 	/* t_var_i is measurement value (initially set value in Set_Init_Parameters) */
 	float t_xoi = 3 * t_var_i;											// Threshold Value (maybe middle value)
 	float t_si = log(3) / t_var_i;										// Sensor Sensitivity (natural logarithm)
@@ -117,8 +121,8 @@ void Calculate_xbar_Update_mu(float t_var_i, float t_fuzzy_input, float* t_mu)
 	*t_mu *= (1 - t_xbar);	// Update mu for TVCF cutoff frequency(wc)
 }
 
-/* 
-*Generate Fuzzy Logic Input (Acc, Jerk, Angular Velocity, Angular Accerleration) 
+/*
+*Generate Fuzzy Logic Input (Acc, Jerk, Angular Velocity, Angular Accerleration)
 */
 void Generate_Fuzzy_Input(Sensor_Params* t_sensor_params, Fuzzy_Params* t_fuzzy_params)
 {
@@ -127,17 +131,17 @@ void Generate_Fuzzy_Input(Sensor_Params* t_sensor_params, Fuzzy_Params* t_fuzzy_
 	float t_wdot_z = Calculate_Delta(t_sensor_params->gyrZ[0], t_sensor_params->gyrZ[1]);
 
 	// absolute ACC
-	t_fuzzy_params->Fuzzy_input[0] = Calculate_Square_Root_Sum(t_sensor_params->accX[0], t_sensor_params->accY[0]);	
+	t_fuzzy_params->Fuzzy_input[0] = Calculate_Square_Root_Sum(t_sensor_params->accX[0], t_sensor_params->accY[0]);
 	// absolute Jerk
 	t_fuzzy_params->Fuzzy_input[1] = Calculate_Square_Root_Sum(t_jerk_x, t_jerk_y);
 	// absolute Gyr(Angular Velocity)
 	t_fuzzy_params->Fuzzy_input[2] = Calculate_Absolute_Value_Float(t_sensor_params->gyrZ[0]);
-	// absolute Wdot(Angular Acceleration)							
-	t_fuzzy_params->Fuzzy_input[3] = Calculate_Absolute_Value_Float(t_wdot_z);											
+	// absolute Wdot(Angular Acceleration)
+	t_fuzzy_params->Fuzzy_input[3] = Calculate_Absolute_Value_Float(t_wdot_z);
 }
 
-/* 
-*Calculate Wc(CutOff Frequency) 
+/*
+*Calculate Wc(CutOff Frequency)
 */
 float Calculate_Fuzzy_Wc(Fuzzy_Params* t_fuzzy_params)
 {
@@ -155,18 +159,18 @@ float Calculate_Fuzzy_Wc(Fuzzy_Params* t_fuzzy_params)
 }
 
 /*
- 
-   _____ _ _ _                
-  |  ___(_) | |_ ___ _ __ ___ 
+
+   _____ _ _ _
+  |  ___(_) | |_ ___ _ __ ___
   | |_  | | | __/ _ \ '__/ __|
   |  _| | | | ||  __/ |  \__ \
   |_|   |_|_|\__\___|_|  |___/
-                              
- 
+
+
 */
 
-/* 
-*Low pass filtering for deg_acc 
+/*
+*Low pass filtering for deg_acc
 */
 float Perform_LPF_on_Acc(float t_curr_acc, float t_prev_filtered_acc, float t_cutoff_frequency, float t_sampling_Period)
 {
@@ -174,8 +178,8 @@ float Perform_LPF_on_Acc(float t_curr_acc, float t_prev_filtered_acc, float t_cu
 	return filtered_acc;
 }
 
-/* 
-*High pass filtering + Integral for gyr 
+/*
+*High pass filtering + Integral for gyr
 */
 float Perform_HPF_on_Gyro(float t_curr_gyro, float t_prev_filtered_gyro, float t_cutoff_frequency, float t_sampling_Period)
 {
@@ -183,8 +187,8 @@ float Perform_HPF_on_Gyro(float t_curr_gyro, float t_prev_filtered_gyro, float t
 	return filtered_gyro;
 }
 
-/* 
-*Function to apply a Time Variant Complementary Filter (TVCF) to an angle 
+/*
+*Function to apply a Time Variant Complementary Filter (TVCF) to an angle
 */
 void Run_TVCF(Sensor_Params* t_sensor_params, Thigh_Angle_Params* t_thigh_angle_params, float t_cutoff_frequency, float t_sampling_Period, AttachPlane t_attach_plane)
 {
@@ -220,22 +224,21 @@ void Run_TVCF(Sensor_Params* t_sensor_params, Thigh_Angle_Params* t_thigh_angle_
 	t_thigh_angle_params->deg_acc_filtered = t_deg_acc_filtered_update;
 	t_thigh_angle_params->deg_gyr_filtered = t_deg_gyr_filtered_update;
 	t_thigh_angle_params->deg_tvcf_filtered = t_deg_tvcf;
-
 }
 
 /*
- 
-    ____       _ _     _____                 _   _                 
-   / ___| __ _(_) |_  |  ___|   _ _ __   ___| |_(_) ___  _ __  ___ 
+
+    ____       _ _     _____                 _   _
+   / ___| __ _(_) |_  |  ___|   _ _ __   ___| |_(_) ___  _ __  ___
   | |  _ / _` | | __| | |_ | | | | '_ \ / __| __| |/ _ \| '_ \/ __|
   | |_| | (_| | | |_  |  _|| |_| | | | | (__| |_| | (_) | | | \__ \
    \____|\__,_|_|\__| |_|   \__,_|_| |_|\___|\__|_|\___/|_| |_|___/
-                                                                   
- 
+
+
 */
 
-/* 
-*Get Max or Min Value between two variables for Normalization 
+/*
+*Get Max or Min Value between two variables for Normalization
 */
 float Get_Max_Float(float t_x, float t_y)
 {
@@ -276,12 +279,12 @@ void Set_Second_Half_Gait_Phase_Parameters(Normalization_Params* t_norm_params, 
 	t_norm_params->vel_min = Get_Min_Float(t_thigh_angle_params->vel_LPF_2nd[0], t_norm_params->vel_min);
 }
 
-/* 
-*Function to Prepare for Circular Normalization 
+/*
+*Function to Prepare for Circular Normalization
 */
 void Prepare_for_Circular_Normalization(Thigh_Angle_Params* t_thigh_angle_params, Normalization_Params* t_norm_params, Gait_Params* t_gait_params)
 {
-	if (t_thigh_angle_params->vel_LPF_2nd[0] < 0 && t_thigh_angle_params->vel_LPF_2nd[1] > 0 
+	if (t_thigh_angle_params->vel_LPF_2nd[0] < 0 && t_thigh_angle_params->vel_LPF_2nd[1] > 0
 		&& t_norm_params->sum_i > (t_gait_params->gait_period)*0.5) {
 		Set_First_Half_Gait_Phase_Parameters(t_norm_params, t_gait_params);
 	}
@@ -290,8 +293,8 @@ void Prepare_for_Circular_Normalization(Thigh_Angle_Params* t_thigh_angle_params
 	}
 }
 
-/* 
-*Function to calculate the current phase of the gait (0~100%) 
+/*
+*Function to calculate the current phase of the gait (0~100%)
 */
 float Get_Current_Gait_Phase(Normalization_Params* t_norm_params, Gait_Params* t_gait_params)
 {
@@ -313,7 +316,7 @@ float Get_Current_Gait_Phase(Normalization_Params* t_norm_params, Gait_Params* t
     if (t_gait_phase < 0 && t_gait_phase != -100){
         t_gait_phase += 100;
     }
-    
+
     /* Compare phase with the stored gait phase in gaitInfo */
     if (t_gait_phase > 5 && t_gait_phase < 95){
         t_gait_phase = Get_Max_Float(t_gait_phase, t_gait_params->gait_phase);
@@ -323,226 +326,122 @@ float Get_Current_Gait_Phase(Normalization_Params* t_norm_params, Gait_Params* t
 }
 
 /*
-*Function to Calculate timing parameters for Plantar&Dorsi assistance force 
+*Function to Calculate timing parameters for Plantar&Dorsi assistance force
 */
+static void Calculate_Assist_Force_Timing_Params(uint16_t* t_r, uint16_t* t_c, uint16_t* t_f, uint16_t t_r_end, uint16_t t_start, uint16_t t_c_end, uint16_t t_f_end, uint16_t t_t_r_limit, uint16_t t_t_f_limit, uint16_t t_gait_period)
+{
+	*t_r = (t_r_end - t_start) * t_gait_period / 100;
+	*t_c = (t_c_end - t_r_end) * t_gait_period / 100;
+	*t_f = (t_f_end - t_c_end) * t_gait_period / 100;
+
+	if (*t_r < t_t_r_limit){
+		*t_c = *t_c - t_t_r_limit + *t_r;
+		*t_r = t_t_r_limit;
+	}
+	if (*t_f < t_t_f_limit){
+		*t_c = *t_c - t_t_f_limit + *t_f;
+		*t_f = t_t_f_limit;
+	}
+	if (*t_c < 0){
+		*t_c = 0;
+	}
+}
 
 /*
 *Function to Set timing parameters for Plantar&Dorsi assistance force(rising, continuous, falling time)
 */
-void Set_Assist_Force_Timing_Params(Assist_Params* t_assist_params, Gait_Params* t_gait_params)
+
+void Set_Assist_Force_Timing_Params(Plantar_Params* t_plantar_params, Dorsi_Params* t_dorsi_params, Assist_Params* t_assist_params, Gait_Params* t_gait_params)
 {
 	if (t_gait_params->gait_period > 2000){
 		t_gait_params->gait_period = 2000;
 	}
-	uint8_t t_r_P = 0;
-	uint8_t t_c_P = 0;
-	uint8_t t_f_P = 0;
-	uint8_t t_r_D = 0;
-	uint8_t t_c_D = 0;
-	uint8_t t_f_D = 0;
 
-
-	t_r_P = (t_assist_params->t_r_P_end - t_assist_params->t_P_start) * (t_gait_params->gait_period) / 100;
-	t_c_P = (t_assist_params->t_c_P_end - t_assist_params->t_r_P_end) * (t_gait_params->gait_period) / 100;
-	t_f_P = (t_assist_params->t_f_P_end - t_assist_params->t_c_P_end) * (t_gait_params->gait_period) / 100;
-
-	if (t_r_P < t_assist_params->t_r_limit){
-		t_c_P = t_c_P - t_assist_params->t_r_limit + t_r_P;
-		t_r_P = t_assist_params->t_r_limit;
-	}
-
-	if (t_f_P < t_assist_params->t_f_limit){
-		t_c_P = t_c_P - t_assist_params->t_f_limit + t_f_P;
-		t_f_P = t_assist_params->t_f_limit;
-	}
-
-
-	t_r_D = (t_assist_params->t_r_D_end - t_assist_params->t_D_start) * (t_gait_params->gait_period) / 100;
-	t_c_D = (t_assist_params->t_c_D_end - t_assist_params->t_r_D_end) * (t_gait_params->gait_period) / 100;
-	t_f_D = (t_assist_params->t_f_D_end - t_assist_params->t_c_D_end) * (t_gait_params->gait_period) / 100;
-
-	if (t_r_D < t_assist_params->t_r_limit){
-		t_c_D = t_c_D - t_assist_params->t_r_limit + t_r_D;
-		t_r_D = t_assist_params->t_r_limit;
-	}
-
-	if (t_f_D < t_assist_params->t_f_limit){
-		t_c_D = t_c_D - t_assist_params->t_f_limit + t_f_D;
-		t_f_D = t_assist_params->t_f_limit;
-	}
-
-
-	if (t_c_P < 0){
-		t_c_P = 0;
-	}
-	if (t_c_D < 0){
-		t_c_D = 0;
-	}
-
-	t_assist_params->t_r_P = t_r_P;
-	t_assist_params->t_c_P = t_c_P;
-	t_assist_params->t_f_P = t_f_P;
-
-	t_assist_params->t_r_D = t_r_D;
-	t_assist_params->t_c_D = t_c_D;
-	t_assist_params->t_f_D = t_f_D;
+	/* Calculate timing parameters for Plantar assistance force */
+	Calculate_Assist_Force_Timing_Params(
+            &t_plantar_params->t_r_P,        // Plantar rising time
+            &t_plantar_params->t_c_P,        // Plantar continuous time
+            &t_plantar_params->t_f_P,        // Plantar falling time
+			t_plantar_params->t_r_P_end,     // Plantar rising end time
+			t_plantar_params->t_P_start, 	// Plantar start time
+			t_plantar_params->t_c_P_end,     // Plantar continuous end time
+			t_plantar_params->t_f_P_end,     // Plantar falling end time
+            t_assist_params->t_r_limit,    	// Rising time limit
+            t_assist_params->t_f_limit,    	// Falling time limit
+            t_gait_params->gait_period      // Gait period
+	);
+	/* Calculate timing parameters for Dorsiflexion assistance force */
+	Calculate_Assist_Force_Timing_Params(
+           	&t_dorsi_params->t_r_D,        // Dorsi rising time
+            &t_dorsi_params->t_c_D,        // Dorsi continuous time
+            &t_dorsi_params->t_f_D,        // Dorsi falling time
+			t_dorsi_params->t_r_D_end,     // Dorsi rising end time
+			t_dorsi_params->t_D_start,   	// Dorsi start time
+			t_dorsi_params->t_c_D_end,     // Dorsi continuous end time
+			t_dorsi_params->t_f_D_end,     // Dorsi falling end time
+            t_assist_params->t_r_limit,    	// Rising time limit
+            t_assist_params->t_f_limit,   	// Falling time limit
+            t_gait_params->gait_period      // Gait period
+	);
 }
 
-/* */
-void Update_Assist_Params(Assist_Params* t_assist_params, float t_new_tension_ref, AssistType t_assist_type)
-{
-	if (t_assist_type == e_PLANTAR){
-        (t_assist_params->phase_loop_time_P) += 1;
-        t_assist_params->Plantar_ref = t_new_tension_ref;
-    } else if (t_assist_type == e_DORSI){
-        (t_assist_params->phase_loop_time_D) += 1;
-        t_assist_params->Dorsi_ref = t_new_tension_ref;
-    }
-}
+//void Set_Assist_Force_Timing_Params(Plantar_Params* t_plantar_params, Dorsi_Params* t_dorsi_params, Assist_Params* t_assist_params, Gait_Params* t_gait_params)
+//{
+//	if (t_gait_params->gait_period > 2000){
+//		t_gait_params->gait_period = 2000;
+//	}
+//	uint8_t t_r_P = 0;
+//	uint8_t t_c_P = 0;
+//	uint8_t t_f_P = 0;
+//	uint8_t t_r_D = 0;
+//	uint8_t t_c_D = 0;
+//	uint8_t t_f_D = 0;
+//
+//
+//	t_r_P = (t_plantar_params->t_r_P_end - t_plantar_params->t_P_start) * (t_gait_params->gait_period) / 100;
+//	t_c_P = (t_plantar_params->t_c_P_end - t_plantar_params->t_r_P_end) * (t_gait_params->gait_period) / 100;
+//	t_f_P = (t_plantar_params->t_f_P_end - t_plantar_params->t_c_P_end) * (t_gait_params->gait_period) / 100;
+//
+//	if (t_r_P < t_assist_params->t_r_limit){
+//		t_c_P = t_c_P - t_assist_params->t_r_limit + t_r_P;
+//		t_r_P = t_assist_params->t_r_limit;
+//	}
+//
+//	if (t_f_P < t_assist_params->t_f_limit){
+//		t_c_P = t_c_P - t_assist_params->t_f_limit + t_f_P;
+//		t_f_P = t_assist_params->t_f_limit;
+//	}
+//
+//
+//	t_r_D = (t_dorsi_params->t_r_D_end - t_dorsi_params->t_D_start) * (t_gait_params->gait_period) / 100;
+//	t_c_D = (t_dorsi_params->t_c_D_end - t_dorsi_params->t_r_D_end) * (t_gait_params->gait_period) / 100;
+//	t_f_D = (t_dorsi_params->t_f_D_end - t_dorsi_params->t_c_D_end) * (t_gait_params->gait_period) / 100;
+//
+//	if (t_r_D < t_assist_params->t_r_limit){
+//		t_c_D = t_c_D - t_assist_params->t_r_limit + t_r_D;
+//		t_r_D = t_assist_params->t_r_limit;
+//	}
+//
+//	if (t_f_D < t_assist_params->t_f_limit){
+//		t_c_D = t_c_D - t_assist_params->t_f_limit + t_f_D;
+//		t_f_D = t_assist_params->t_f_limit;
+//	}
+//
+//
+//	if (t_c_P < 0){
+//		t_c_P = 0;
+//	}
+//	if (t_c_D < 0){
+//		t_c_D = 0;
+//	}
+//
+//	t_plantar_params->t_r_P = t_r_P;
+//	t_plantar_params->t_c_P = t_c_P;
+//	t_plantar_params->t_f_P = t_f_P;
+//
+//	t_dorsi_params->t_r_D = t_r_D;
+//	t_dorsi_params->t_c_D = t_c_D;
+//	t_dorsi_params->t_f_D = t_f_D;
+//}
 
-void Transfer_Phase_State(Assist_Params* t_assist_params, AssistType t_pd_sel)
-{
-	if (t_pd_sel == e_PLANTAR){
-		switch (t_assist_params->phase_state_P)
-		{
-			case e_RISING:
-				if (t_assist_params->phase_loop_time_P == t_assist_params->t_r_P){
-					t_assist_params->phase_state_P = e_CONTINUOUS;
-					t_assist_params->phase_loop_time_P = 0;
-				}
-				break;
-			case e_CONTINUOUS:
-				if (t_assist_params->phase_loop_time_P == t_assist_params->t_c_P){
-					t_assist_params->phase_state_P = e_FALLING;
-					t_assist_params->phase_loop_time_P = 0;
-				}
-				break;
-			case e_FALLING:
-				if (t_assist_params->phase_loop_time_P == t_assist_params->t_f_P){
-					t_assist_params->phase_state_P = e_END;
-				}
-				break;
-			default:
-				break;
-		}
-	}
-
-	else if (t_pd_sel == e_DORSI){
-		switch (t_assist_params->phase_state_D)
-		{
-			case e_RISING:
-				if (t_assist_params->phase_loop_time_D == t_assist_params->t_r_D){
-					t_assist_params->phase_state_D = e_CONTINUOUS;
-					t_assist_params->phase_loop_time_D = 0;
-				}
-				break;
-			case e_CONTINUOUS:
-				if (t_assist_params->phase_loop_time_D == t_assist_params->t_c_D){
-					t_assist_params->phase_state_D = e_FALLING;
-					t_assist_params->phase_loop_time_D = 0;
-				}
-				break;
-			case e_FALLING:
-				if (t_assist_params->phase_loop_time_D == t_assist_params->t_f_D){
-					t_assist_params->phase_state_D = e_END;
-				}
-				break;
-			default:
-				break;
-		}
-	}
-}
-
-
-
-void Update_Assist_Force(Assist_Params* t_assist_params, AssistType t_pd_sel)
-{
-
-	if (t_pd_sel == e_PLANTAR){
-
-		float new_tension_P_ref = 0.0;
-
-	    if (t_assist_params->trigger_P == ASSIST_OFF){
-	        t_assist_params->Plantar_ref = PLANTAR_REF_OFFSET;
-	    }
-
-	    if (t_assist_params->ref_shape == TRAPEZOIDAL){
-	        if (t_assist_params->manual_time_set_P == 1){
-	            t_assist_params->t_r_P = 50;
-	            t_assist_params->t_c_P = 1000;
-	            t_assist_params->t_f_P = 50;
-	        }
-
-	        if (t_assist_params->phase_state_P == e_STANDBY && t_assist_params->trigger_P == ASSIST_ON){
-	            t_assist_params->phase_state_P = e_RISING;
-	            t_assist_params->phase_loop_time_P = 0;
-	        }
-
-	        if (t_assist_params->phase_state_P == e_RISING && t_assist_params->phase_loop_time_P < t_assist_params->t_r_P){
-				new_tension_P_ref = PLANTAR_REF_OFFSET + (t_assist_params->Amplitude_P/2)*(1 + sin((((t_assist_params->phase_loop_time_P*1.0)/(t_assist_params->t_r_P*1.0)) - 0.5)*PI));
-	            Update_Assist_Params(t_assist_params, new_tension_P_ref, e_PLANTAR);
-	        }
-	        else if (t_assist_params->phase_state_P == e_CONTINUOUS && t_assist_params->phase_loop_time_P < t_assist_params->t_c_P){
-				new_tension_P_ref = PLANTAR_REF_OFFSET + t_assist_params->Amplitude_P;
-	            Update_Assist_Params(t_assist_params, new_tension_P_ref, e_PLANTAR);
-	        }
-	        else if (t_assist_params->phase_state_P == e_FALLING && t_assist_params->phase_loop_time_P < t_assist_params->t_f_P){
-				new_tension_P_ref = PLANTAR_REF_OFFSET + (t_assist_params->Amplitude_P/2)*(1 - sin((((t_assist_params->phase_loop_time_P*1.0)/(t_assist_params->t_f_P*1.0)) - 0.5)*PI));
-	            Update_Assist_Params(t_assist_params, new_tension_P_ref, e_PLANTAR);
-	        }
-	        else if (t_assist_params->phase_state_P == e_END){
-	            t_assist_params->Plantar_ref = PLANTAR_REF_OFFSET;
-	            t_assist_params->phase_state_P = e_STANDBY;
-	            t_assist_params->trigger_P = ASSIST_OFF;
-	            t_assist_params->manual_time_set_P = 0;
-	        }
-
-	        Transfer_Phase_State(t_assist_params, t_pd_sel);
-	    }
-	}
-
-
-	else if (t_pd_sel == e_DORSI){
-
-		float new_tension_D_ref;
-
-	    if (t_assist_params->trigger_D == ASSIST_OFF){
-	        t_assist_params->Dorsi_ref = DORSI_REF_OFFSET;
-	    }
-
-	    if (t_assist_params->ref_shape == TRAPEZOIDAL){
-	        if (t_assist_params->manual_time_set_D == 1){
-	            t_assist_params->t_r_D = 50;
-	            t_assist_params->t_c_D = 1000;
-	            t_assist_params->t_f_D = 50;
-	        }
-
-	        if (t_assist_params->phase_state_D == e_STANDBY && t_assist_params->trigger_D == ASSIST_ON){
-	            t_assist_params->phase_state_D = e_RISING;
-	            t_assist_params->phase_loop_time_D = 0;
-	        }
-
-	        if (t_assist_params->phase_state_D == e_RISING && t_assist_params->phase_loop_time_D < t_assist_params->t_r_D){
-				new_tension_D_ref = DORSI_REF_OFFSET + (t_assist_params->Amplitude_D/2)*(1 + sin((((t_assist_params->phase_loop_time_D*1.0)/(t_assist_params->t_r_D*1.0)) - 0.5)*PI));
-	            Update_Assist_Params(t_assist_params, new_tension_D_ref, e_DORSI);
-	        }
-	        else if (t_assist_params->phase_state_D == e_CONTINUOUS && t_assist_params->phase_loop_time_D < t_assist_params->t_c_D){
-				new_tension_D_ref = DORSI_REF_OFFSET + t_assist_params->Amplitude_D;
-	            Update_Assist_Params(t_assist_params, new_tension_D_ref, e_DORSI);
-	        }
-	        else if (t_assist_params->phase_state_D == e_FALLING && t_assist_params->phase_loop_time_D < t_assist_params->t_f_D){
-				new_tension_D_ref = DORSI_REF_OFFSET + (t_assist_params->Amplitude_D/2)*(1 - sin((((t_assist_params->phase_loop_time_D*1.0)/(t_assist_params->t_f_D*1.0)) - 0.5)*PI));
-	            Update_Assist_Params(t_assist_params, new_tension_D_ref, e_DORSI);
-	        }
-	        else if (t_assist_params->phase_state_D == e_END){
-	            t_assist_params->Dorsi_ref = DORSI_REF_OFFSET;
-	            t_assist_params->phase_state_D = e_STANDBY;
-	            t_assist_params->trigger_D = ASSIST_OFF;
-	            t_assist_params->manual_time_set_D = 0;
-	        }
-
-	        Transfer_Phase_State(t_assist_params, t_pd_sel);
-	    }
-	}
-}
 

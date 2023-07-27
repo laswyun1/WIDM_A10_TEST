@@ -106,13 +106,13 @@ int main(void)
   MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
 
-//  // [For Debug, HCLK = 240MHz, SysClk= 480MHz(USED) //
-//  CoreDebug->DEMCR &= ~CoreDebug_DEMCR_TRCENA_Msk;
-//  CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-//  //DWT->LAR = 0xC5ACCE55;
-//  DWT->CTRL &= ~DWT_CTRL_CYCCNTENA_Msk;
-//  DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-//  DWT->CYCCNT = 0;
+  // [For Debug, HCLK = 240MHz, SysClk= 480MHz(USED) //
+  CoreDebug->DEMCR &= ~CoreDebug_DEMCR_TRCENA_Msk;
+  CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+  //DWT->LAR = 0xC5ACCE55;
+  DWT->CTRL &= ~DWT_CTRL_CYCCNTENA_Msk;
+  DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+  DWT->CYCCNT = 0;
 
   Create_PDOTable_ObjDictionary();
   Create_SDOTable_ObjDictionary();
@@ -120,7 +120,7 @@ int main(void)
   MS_enum = IDLE;
 
   Init_Imu_Ctrl();
-//  Init_Msg_Hdlr();
+  Init_Msg_Hdlr();
 
   /* USER CODE END 2 */
 

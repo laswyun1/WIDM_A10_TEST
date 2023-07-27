@@ -17,7 +17,7 @@
 */
 
 /* Reset Value Zero */
-static void Reset_Parameters()
+static void Reset_Parameters( )
 {
 	sensor_params 		= 	(Sensor_Params){0};
 	norm_params 		= 	(Normalization_Params){0};
@@ -25,6 +25,8 @@ static void Reset_Parameters()
 	fuzzy_params 		= 	(Fuzzy_Params){0};
 	thigh_angle_params 	= 	(Thigh_Angle_Params){0};
 	th_params 			= 	(Threshold_Params){0};
+	plantar_params      = 	(Plantar_Params){0};
+	dorsi_params		= 	(Dorsi_Params){0};
 	assist_params		= 	(Assist_Params){0};
 
 	walking 				=	0;
@@ -45,56 +47,62 @@ static void Set_Initial_Angle_Values(Thigh_Angle_Params* t_thigh_angle_params, N
     t_norm_params->deg_o = t_initial_angle;
 }
 
-/* 
- *Function to calculate the initial thigh angle 
+/*
+ *Function to calculate the initial thigh angle
 */
-
 static void Calculate_Initial_Thigh_Angle(Thigh_Angle_Params* t_thigh_angle_params, Normalization_Params* t_norm_params, AccGyroData* t_acc_gyro_data, AttachPlane t_attach_plane)
 {
-	const int t_total_samples = 100;
+	uint8_t t_total_samples = 100;
 	float t_accumulated_angle = 0.0;
+	uint8_t data_check = 0;
+	float t_init_thigh_angle = 0.0;
 
 	for (uint8_t i = 1; i <= t_total_samples; i++){
-        Get_Value_6Axis_IMU(t_acc_gyro_data);
+        data_check = Get_Value_6Axis_IMU(t_acc_gyro_data);
+        if (data_check == 0){
+    		/* Calculate the accelerometer angle (in degrees) */
+            float accelerometer_angle = 0.0;
 
-		/* Calculate the accelerometer angle (in degrees) */
-        float accelerometer_angle = 0.0;
+            if (t_attach_plane == e_LEFT_SAGITAL){
+            	accelerometer_angle = (atan2((t_acc_gyro_data->acc_y)*(-1), (t_acc_gyro_data->acc_x)*(-1))) * (180 / PI);	// arctan(-y/-x) Left Sagital case
+            }
+            else if (t_attach_plane == e_RIGHT_SAGITAL){
+            	accelerometer_angle = (atan2(t_acc_gyro_data->acc_y, (t_acc_gyro_data->acc_x)*(-1))) * (180 / PI);	// arctan(y/-x) Right Sagital case
+            }
+            else if (t_attach_plane == e_LEFT_SAGITAL_DEMO){
+            	accelerometer_angle = (atan2(t_acc_gyro_data->acc_x, (t_acc_gyro_data->acc_y)*(-1))) * (180 / PI);	// arctan(x/-y) Left Sagital - DEMO ver case
+            }
 
-        if (t_attach_plane == e_LEFT_SAGITAL){
-        	accelerometer_angle = (atan2((t_acc_gyro_data->acc_y)*(-1), (t_acc_gyro_data->acc_x)*(-1))) * (180 / PI);	// arctan(-y/-x) Left Sagital case
+    		/* Accumulate the accelerometer angle */
+            t_accumulated_angle += accelerometer_angle;
+
+    		/* Calculate and update the initial thigh angle (average) */
+            t_init_thigh_angle = t_accumulated_angle / ((float)i);
         }
-        else if (t_attach_plane == e_RIGHT_SAGITAL){
-        	accelerometer_angle = (atan2(t_acc_gyro_data->acc_y, (t_acc_gyro_data->acc_x)*(-1))) * (180 / PI);	// arctan(y/-x) Right Sagital case
+        else{
+        	i--;
+        	err_chk++;
         }
-        else if (t_attach_plane == e_LEFT_SAGITAL_DEMO){
-        	accelerometer_angle = (atan2(t_acc_gyro_data->acc_x, (t_acc_gyro_data->acc_y)*(-1))) * (180 / PI);	// arctan(x/-y) Left Sagital - DEMO ver case
-        }
-
-		/* Accumulate the accelerometer angle */
-        t_accumulated_angle += accelerometer_angle;
-
-		/* Calculate and update the initial thigh angle (average) */
-        t_thigh_angle_params->angle_init = t_accumulated_angle / ((float)i);
     }
 
-    Set_Initial_Angle_Values(t_thigh_angle_params, t_norm_params, t_thigh_angle_params->angle_init);
+	t_thigh_angle_params->angle_init = t_init_thigh_angle;
+    Set_Initial_Angle_Values(t_thigh_angle_params, t_norm_params, t_init_thigh_angle);
 }
 
 
-/* 
- *Function to execute the time-varying complementary filter (with Fuzzy Logic - wc) 
+/*
+ *Function to execute the time-varying complementary filter (with Fuzzy Logic - wc)
 */
 static void Run_Complementary_Filter(Sensor_Params* t_sensor_params, Thigh_Angle_Params* t_thigh_angle_params, Fuzzy_Params* t_fuzzy_params, float t_sampling_Period, AttachPlane t_attach_plane)
 {
 	/* Apply time-varying complementary filter on the sensor data using fuzzy logic(wc) and update the thigh angle parameters */
-//	*t_thigh_angle_params = Run_TVCF(t_sensor_params, t_thigh_angle_params, t_fuzzy_params->wc, t_sampling_Period, t_attach_plane);
 	Run_TVCF(t_sensor_params, t_thigh_angle_params, t_fuzzy_params->wc, t_sampling_Period, t_attach_plane);
 	/* Update the unfiltered thigh angle to be the same as the filtered thigh angle */
 	t_thigh_angle_params->deg_tvcf[0] = t_thigh_angle_params->deg_tvcf_filtered;
 }
 
-/* 
- *Function to normalize sensor data and calculate the current phase of the gait 
+/*
+ *Function to normalize sensor data and calculate the current phase of the gait
 */
 static void Run_Normalization_And_Get_Gait_Phase(Thigh_Angle_Params* t_thigh_angle_params, Normalization_Params* t_norm_params, Gait_Params* t_gait_params)
 {
@@ -109,8 +117,8 @@ static void Run_Normalization_And_Get_Gait_Phase(Thigh_Angle_Params* t_thigh_ang
 	t_gait_params->gait_phase = Get_Current_Gait_Phase(t_norm_params, t_gait_params); // Current phase (0 ~ 100%)
 }
 
-/* 
- *Function to reduce noise in sensor data 
+/*
+ *Function to reduce noise in sensor data
 */
 static void Reduce_Noise_In_Sensor_Data(Thigh_Angle_Params* t_thigh_angle_params, Gait_Params* t_gait_params)
 {
@@ -122,7 +130,7 @@ static void Reduce_Noise_In_Sensor_Data(Thigh_Angle_Params* t_thigh_angle_params
 	t_thigh_angle_params->deg_LPF_1st[0] = Perform_LPF_on_Acc(
 		t_thigh_angle_params->deg_tvcf[0],
 		t_thigh_angle_params->deg_LPF_1st[1],
-		t_lpf_freq, 
+		t_lpf_freq,
 		IMU_CONTROL_PERIOD
 	);
 
@@ -130,7 +138,7 @@ static void Reduce_Noise_In_Sensor_Data(Thigh_Angle_Params* t_thigh_angle_params
 	t_thigh_angle_params->deg_LPF_2nd[0] = Perform_LPF_on_Acc(
 		t_thigh_angle_params->deg_LPF_1st[0],
 		t_thigh_angle_params->deg_LPF_2nd[1],
-		t_lpf_freq, 
+		t_lpf_freq,
 		IMU_CONTROL_PERIOD
 	);
 
@@ -141,7 +149,7 @@ static void Reduce_Noise_In_Sensor_Data(Thigh_Angle_Params* t_thigh_angle_params
 	t_thigh_angle_params->vel_LPF_1st[0] = Perform_LPF_on_Acc(
 		t_thigh_angle_params->vel_raw[0],
 		t_thigh_angle_params->vel_LPF_1st[1],
-		t_lpf_freq, 
+		t_lpf_freq,
 		IMU_CONTROL_PERIOD
 	);
 
@@ -149,15 +157,15 @@ static void Reduce_Noise_In_Sensor_Data(Thigh_Angle_Params* t_thigh_angle_params
 	t_thigh_angle_params->vel_LPF_2nd[0] = Perform_LPF_on_Acc(
 		t_thigh_angle_params->vel_LPF_1st[0],
 		t_thigh_angle_params->vel_LPF_2nd[1],
-		t_lpf_freq, 
+		t_lpf_freq,
 		IMU_CONTROL_PERIOD
 	);
 }
 
-/* 
+/*
  *This function calculates and returns the phase radius
 */
-static float Compute_Phase_Radius(float t_deg_diff, float t_deg_th, float t_vel_diff, float t_vel_th) 
+static float Compute_Phase_Radius(float t_deg_diff, float t_deg_th, float t_vel_diff, float t_vel_th)
 {
     /* Calculate degree ratio */
     float t_deg_ratio = t_deg_diff / t_deg_th;
@@ -169,27 +177,27 @@ static float Compute_Phase_Radius(float t_deg_diff, float t_deg_th, float t_vel_
     return Calculate_Square_Root_Sum(t_deg_ratio, t_vel_ratio);
 }
 
-/* 
- *This function updates the walking state based on the phase radii and sum_i 
+/*
+ *This function updates the walking state based on the phase radii and sum_i
 */
 static void Update_Walking_State(uint8_t* t_walking, float t_phase_radius_start, float t_phase_radius_stop, int16_t t_sum_i)
 {
     /* The walking state is updated based on the current walking state, phase radii, and t_sum_i */
     switch (*t_walking)
     {
-        case e_STOP:	
+        case e_STOP:
             /* If the start phase radius is greater than 1, set the walking state to 1 */
             if (t_phase_radius_start > 1){
                 *t_walking = 1;
             }
             break;
-        case e_WALKING_START:	
+        case e_WALKING_START:
             /* If sum_i is greater than 1000, set the walking state to 2 */
             if (t_sum_i > 1000){
                 *t_walking = 2;
             }
             break;
-        case e_WALKING_HALF:	
+        case e_WALKING_HALF:
             /* If sum_i is 0, set the walking state to 3 */
             if (t_sum_i == 0){
                 *t_walking = 3;
@@ -204,8 +212,8 @@ static void Update_Walking_State(uint8_t* t_walking, float t_phase_radius_start,
     }
 }
 
-/* 
-*This function checks the walking state using the walking parameters and IMU system information 
+/*
+*This function checks the walking state using the walking parameters and IMU system information
 */
 static void Check_Walking_State(Thigh_Angle_Params* t_thigh_angle_params, Normalization_Params* t_norm_params, Threshold_Params* t_th_params, Gait_Params* t_gait_params, uint8_t* t_walking)
 {
@@ -231,71 +239,15 @@ static void Check_Walking_State(Thigh_Angle_Params* t_thigh_angle_params, Normal
     }
 }
 
+
+static void Setting_Assist_Time(Plantar_Params* t_plantar_params, Dorsi_Params* t_dorsi_params, Assist_Params* t_assist_params, Gait_Params* t_gait_params)
+{
+	Set_Assist_Force_Timing_Params(t_plantar_params, t_dorsi_params, t_assist_params, t_gait_params);
+}
+
+
 /*
-*The function Setting_Assist_Force_and_Time updates assistive force and time parameters.
-*/
-static void Setting_Assist_Force_and_Time(Assist_Params* t_assist_params, Gait_Params* t_gait_params)
-{
-	Set_Assist_Force_Timing_Params(t_assist_params, t_gait_params);
-	Update_Assist_Force(t_assist_params, e_PLANTAR);
-	Update_Assist_Force(t_assist_params, e_DORSI);
-}
-
-static void Setting_Assist_Time(Assist_Params* t_assist_params, Gait_Params* t_gait_params)
-{
-	Set_Assist_Force_Timing_Params(t_assist_params, t_gait_params);
-//	Update_Assist_Force(t_assist_params, e_PLANTAR);
-}
-
-/**
- * The function IsWithinRange checks if a given value is within a specific range.
- * 
- * @param t_value - The t_value that needs to be checked.
- * @param t_start - The starting point of the range.
- * @param t_range - The size of the range from the start.
- * 
- * @return True if the value is within the range, False otherwise.
- */
-static bool Is_Within_Range(float t_value, float t_start, float t_range) 
-{
-    if (t_range > 0){
-        return (t_value > t_start) && (t_value < t_start + t_range);
-    } else {
-        return (t_value > t_start + t_range) && (t_value < t_start);
-    }
-}
-
-/**
- * The function SetTrigger updates the assist parameters of the WIDM system based on the gait phase. 
- * 
- * @param t_widm_system - A pointer to the WIDM_System struct which contains the system's parameters.
- * @param t_imu_system - A pointer to the IMU_System struct which contains the walking state.
- * 
- * If the walking state of the IMU system is 3, the function checks the current and previous gait phases 
- * to decide whether to set the plantar or dorsi trigger.
- * 
- * The triggers are set based on whether the gait phases are within specific ranges. 
- * If a trigger is set, the opposite trigger is set to 0.
- */
-static void Set_Trigger(Assist_Params* t_assist_params, Gait_Params* t_gait_params, uint8_t t_walking)
-{
-    if (t_walking != 3) return;
-
-    if (Is_Within_Range(t_gait_params->gait_phase, t_assist_params->t_P_start, 10) &&
-        Is_Within_Range(t_gait_params->gait_phase_pre, t_assist_params->t_P_start, -10)){
-        t_assist_params->trigger_P = 1;
-        t_assist_params->trigger_D = 0;
-    }
-
-    if (Is_Within_Range(t_gait_params->gait_phase, t_assist_params->t_D_start, 25) &&
-        Is_Within_Range(t_gait_params->gait_phase_pre, t_assist_params->t_D_start, -25)){
-        t_assist_params->trigger_P = 0;
-		t_assist_params->trigger_D = 1;
-    }
-}
-
-/* 
-*The function Update_IMU_Raw_Value updates the IMU raw values. 
+*The function Update_IMU_Raw_Value updates the IMU raw values.
 */
 static void Update_IMU_Raw_Value(Sensor_Params* t_sensor_params, AccGyroData* t_acc_gyro_data, MagData* t_mag_data, AttachPlane t_attach_plane)
 {
@@ -307,24 +259,19 @@ static void Update_IMU_Raw_Value(Sensor_Params* t_sensor_params, AccGyroData* t_
 	t_sensor_params->gyrY[0] = t_acc_gyro_data->gyr_y;
 
 	if (t_attach_plane == e_LEFT_SAGITAL || t_attach_plane == e_LEFT_SAGITAL_DEMO){
-		t_sensor_params->gyrZ[0] = (-1) * t_acc_gyro_data->gyr_z; 	// For Left Sagital case
+		t_sensor_params->gyrZ[0] = (-1) * (t_acc_gyro_data->gyr_z); 	// For Left Sagital case
 	}
 	else if (t_attach_plane == e_RIGHT_SAGITAL){
 		t_sensor_params->gyrZ[0] = t_acc_gyro_data->gyr_z; 	// For Right Sagital case
 	}
-
-	t_sensor_params->magX[0] = t_mag_data->mag_x;
-	t_sensor_params->magY[0] = t_mag_data->mag_y;
-	t_sensor_params->magZ[0] = t_mag_data->mag_z;
+//	t_sensor_params->magX[0] = t_mag_data->mag_x;
+//	t_sensor_params->magY[0] = t_mag_data->mag_y;
+//	t_sensor_params->magZ[0] = t_mag_data->mag_z;
 }
 
 
-
-
-
-
-/* 
-*Main function to calculate Roll, Pitch and Yaw 
+/*
+*Main function to calculate Roll, Pitch and Yaw
 */
 static void Calculate_RPY(RollPitchYaw* t_rpy, AccGyroData* t_acc_gyro_data)
 {
@@ -362,8 +309,6 @@ static int Run_Total_function()
 
 	Update_IMU_Raw_Value(&sensor_params, &acc_gyro_data, &mag_data, attach_plane);
 
-
-
 	Generate_Fuzzy_Input(&sensor_params, &fuzzy_params);
 	wc_test = Calculate_Fuzzy_Wc(&fuzzy_params);
 
@@ -375,10 +320,11 @@ static int Run_Total_function()
 
 	Check_Walking_State(&thigh_angle_params, &norm_params, &th_params, &gait_params, &walking);
 
-	// Msg_Hdlr problem //
-//	Setting_Assist_Time(&assist_params, &gait_params);
-	Setting_Assist_Force_and_Time(&assist_params, &gait_params);
-	Set_Trigger(&assist_params, &gait_params, walking);
+	Setting_Assist_Time(&plantar_params, &dorsi_params, &assist_params, &gait_params);
+
+//	// Msg_Hdlr problem //
+//	Setting_Assist_Force_and_Time(&assist_params, &gait_params);
+//	Set_Trigger(&assist_params, &gait_params, walking);
 
 	return 0;
 }
@@ -486,8 +432,8 @@ void Init_Imu_Ctrl(void)
 	Create_PDO(TASK_ID_IMU, PDO_ID_IMU_GAIT_PHASE, 		e_Float32,  1, &gait_params.gait_phase);
 
 	// Assist mode //
-	Create_PDO(TASK_ID_IMU, PDO_ID_IMU_TENSION_P, e_Float32, 1, &assist_params.Plantar_ref);
-	Create_PDO(TASK_ID_IMU, PDO_ID_IMU_TENSION_D, e_Float32, 1, &assist_params.Dorsi_ref);
+	Create_PDO(TASK_ID_IMU, PDO_ID_IMU_TENSION_P, e_Float32, 1, &plantar_params.Plantar_ref);
+	Create_PDO(TASK_ID_IMU, PDO_ID_IMU_TENSION_D, e_Float32, 1, &dorsi_params.Dorsi_ref);
 
 	// SDO
 	MSG_COMMON_SDO_CREATE(TASK_ID_IMU)
@@ -497,7 +443,7 @@ void Init_Imu_Ctrl(void)
 
 	Reset_Parameters();
 	attach_plane = e_LEFT_SAGITAL_DEMO;		// WIDM Attached Plane Selection
-	Set_Init_Parameters(&norm_params, &gait_params, &fuzzy_params, &th_params, &assist_params);
+	Set_Init_Parameters(&norm_params, &gait_params, &fuzzy_params, &th_params, &plantar_params, &dorsi_params, &assist_params);
 	Calculate_Initial_Thigh_Angle(&thigh_angle_params, &norm_params, &acc_gyro_data, attach_plane);
 
 	/* Callback Allocation */
@@ -509,23 +455,14 @@ void Init_Imu_Ctrl(void)
 
 void Run_Imu_Ctrl(void)
 {
-	/* Loop Start Time Check */
-//	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-//	DWT->CYCCNT = 0;
-//	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 
-//	uint32_t imu_ctrl_loop_time_cnt_1 = DWT->CYCCNT;
+	uint32_t imu_ctrl_loop_time_cnt_1 = DWT->CYCCNT;
 
 	/*Run Device */
 	Run_Task(&imu_ctrl_task);
 
-//	uint32_t imu_ctrl_loop_time_cnt_2 = DWT->CYCCNT;
-//
-//	/* Elapsed Time Check */
-//	imu_ctrl_task_us = (imu_ctrl_loop_time_cnt_2 - imu_ctrl_loop_time_cnt_1)/480;	// in microsecond
+	uint32_t imu_ctrl_loop_time_cnt_2 = DWT->CYCCNT;
 
-
-//	if (imu_ctrl_task_us < 1000) {
-//		Set_GPIO_D_State(LED_BOOT_RED_Pin, SET);
-//	}
+	/* Elapsed Time Check */
+	imu_ctrl_task_us = (imu_ctrl_loop_time_cnt_2 - imu_ctrl_loop_time_cnt_1)/480;	// in microsecond
 }
