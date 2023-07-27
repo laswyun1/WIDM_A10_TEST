@@ -22,4 +22,4 @@ imu_ctrl_task.c:377:13:StateEnable_Run	8	static
 imu_ctrl_task.c:382:13:StateEnable_Ext	4	static
 imu_ctrl_task.c:387:13:StateError_Run	4	static
 imu_ctrl_task.c:400:6:Init_Imu_Ctrl	88	static
-imu_ctrl_task.c:463:6:Run_Imu_Ctrl	16	static
+imu_ctrl_task.c:462:6:Run_Imu_Ctrl	16	static

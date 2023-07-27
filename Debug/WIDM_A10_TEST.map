@@ -195,6 +195,7 @@ ioif_ext_gpio4_callback_ptr
                     0x4               ./Core/Src/main.o
 ioif_tim5_callback_ptr
                     0x4               ./Core/Src/main.o
+hi                  0x4               ./Core/Src/main.o
 MS_enum             0x1               ./Core/Src/main.o
 err_code            0x4               ./Core/Src/main.o
 i2c3_tx_buff        0x1               ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
@@ -8667,7 +8668,7 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .igot.plt      0x0000000024000078        0x0 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+dp/hard/crtbegin.o
                 0x0000000024000078                . = ALIGN (0x4)
 
-.bss            0x0000000024000078     0xd5a4 load address 0x000000000800ef30
+.bss            0x0000000024000078     0xd5a8 load address 0x000000000800ef30
                 0x0000000024000078                _sbss = .
                 0x0000000024000078                __bss_start__ = _sbss
  *(.bss)
@@ -8707,7 +8708,7 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  COMMON         0x000000002400015c       0x98 ./Core/Src/i2c.o
                 0x000000002400015c                hi2c3
                 0x00000000240001a8                hi2c1
- COMMON         0x00000000240001f4     0xd328 ./Core/Src/main.o
+ COMMON         0x00000000240001f4     0xd32c ./Core/Src/main.o
                 0x00000000240001f4                imu_ctrl_loop_time_cnt_1
                 0x00000000240001f8                SDO_Table
                 0x0000000024000360                comm_loop_cnt
@@ -8753,80 +8754,80 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x000000002400cf30                fuzzy_params
                 0x000000002400cf5c                ioif_ext_gpio4_callback_ptr
                 0x000000002400cf60                ioif_tim5_callback_ptr
-                0x000000002400cf64                MS_enum
-                0x000000002400cf68                err_code
-                0x000000002400cf6c                GUI_onoff
-                0x000000002400cf70                assist_params
-                0x000000002400cf78                fdcan_rx_callback_ptr
-                0x000000002400cf7c                fdcan2_obj
-                0x000000002400cff8                ioif_ext_gpio2_callback_ptr
-                0x000000002400cffc                thigh_angle_params
-                0x000000002400d044                ioif_tim11_callback_ptr
-                0x000000002400d048                ioif_tim4_callback_ptr
-                0x000000002400d04c                usbRxData
-                0x000000002400d08c                dorsi_params
-                0x000000002400d0a8                plantar_params
-                0x000000002400d0c4                ioif_tim10_callback_ptr
-                0x000000002400d0c8                ioif_ext_gpio10_callback_ptr
-                0x000000002400d0cc                ori_node
-                0x000000002400d0d0                ioif_tim8_callback_ptr
-                0x000000002400d0d4                s_position_ref
-                0x000000002400d0e4                gait_params
-                0x000000002400d0f0                Imu_Ctrl_Error_Type
-                0x000000002400d0f4                acc_gyro_data
-                0x000000002400d10c                ioif_tim12_callback_ptr
-                0x000000002400d110                sensor_params
-                0x000000002400d158                icm20608_obj
-                0x000000002400d18c                fdcan1_obj
-                0x000000002400d208                ioif_tim15_callback_ptr
-                0x000000002400d20c                attach_plane
-                0x000000002400d210                PDO_Table
-                0x000000002400d378                err_chk
-                0x000000002400d379                comm_type
-                0x000000002400d37c                fdcanRxData
-                0x000000002400d3bc                MSG_time_elapsed
-                0x000000002400d3c0                RxData1
-                0x000000002400d400                mag_data
-                0x000000002400d40c                test_cmd
-                0x000000002400d410                wc_test
-                0x000000002400d414                ioif_ext_gpio6_callback_ptr
-                0x000000002400d418                norm_params
-                0x000000002400d44c                ioif_ext_gpio7_callback_ptr
-                0x000000002400d450                ioif_tim7_callback_ptr
-                0x000000002400d454                imu_ctrl_task
- COMMON         0x000000002400d51c       0x98 ./Core/Src/tim.o
-                0x000000002400d51c                htim3
-                0x000000002400d568                htim6
- COMMON         0x000000002400d5b4        0x4 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
-                0x000000002400d5b4                uwTick
- COMMON         0x000000002400d5b8       0x2c ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
-                0x000000002400d5b8                i2c1_tx_buff
-                0x000000002400d5b9                i2c3_tx_buff
-                0x000000002400d5bc                i2c1_rx_buff
-                0x000000002400d5d0                i2c3_rx_buff
- COMMON         0x000000002400d5e4       0x28 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
-                0x000000002400d5e4                test_dummy
- COMMON         0x000000002400d60c        0x9 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(lib_a-lock.o)
-                0x000000002400d60c                __lock___atexit_recursive_mutex
-                0x000000002400d60d                __lock___arc4random_mutex
-                0x000000002400d60e                __lock___env_recursive_mutex
-                0x000000002400d60f                __lock___sinit_recursive_mutex
-                0x000000002400d610                __lock___malloc_recursive_mutex
-                0x000000002400d611                __lock___at_quick_exit_mutex
-                0x000000002400d612                __lock___dd_hash_mutex
-                0x000000002400d613                __lock___tz_mutex
-                0x000000002400d614                __lock___sfp_recursive_mutex
- *fill*         0x000000002400d615        0x3 
- COMMON         0x000000002400d618        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(lib_a-reent.o)
-                0x000000002400d618                errno
-                0x000000002400d61c                . = ALIGN (0x4)
-                0x000000002400d61c                _ebss = .
-                0x000000002400d61c                __bss_end__ = _ebss
+                0x000000002400cf64                hi
+                0x000000002400cf68                MS_enum
+                0x000000002400cf6c                err_code
+                0x000000002400cf70                GUI_onoff
+                0x000000002400cf74                assist_params
+                0x000000002400cf7c                fdcan_rx_callback_ptr
+                0x000000002400cf80                fdcan2_obj
+                0x000000002400cffc                ioif_ext_gpio2_callback_ptr
+                0x000000002400d000                thigh_angle_params
+                0x000000002400d048                ioif_tim11_callback_ptr
+                0x000000002400d04c                ioif_tim4_callback_ptr
+                0x000000002400d050                usbRxData
+                0x000000002400d090                dorsi_params
+                0x000000002400d0ac                plantar_params
+                0x000000002400d0c8                ioif_tim10_callback_ptr
+                0x000000002400d0cc                ioif_ext_gpio10_callback_ptr
+                0x000000002400d0d0                ori_node
+                0x000000002400d0d4                ioif_tim8_callback_ptr
+                0x000000002400d0d8                s_position_ref
+                0x000000002400d0e8                gait_params
+                0x000000002400d0f4                Imu_Ctrl_Error_Type
+                0x000000002400d0f8                acc_gyro_data
+                0x000000002400d110                ioif_tim12_callback_ptr
+                0x000000002400d114                sensor_params
+                0x000000002400d15c                icm20608_obj
+                0x000000002400d190                fdcan1_obj
+                0x000000002400d20c                ioif_tim15_callback_ptr
+                0x000000002400d210                attach_plane
+                0x000000002400d214                PDO_Table
+                0x000000002400d37c                err_chk
+                0x000000002400d37d                comm_type
+                0x000000002400d380                fdcanRxData
+                0x000000002400d3c0                MSG_time_elapsed
+                0x000000002400d3c4                RxData1
+                0x000000002400d404                mag_data
+                0x000000002400d410                test_cmd
+                0x000000002400d414                wc_test
+                0x000000002400d418                ioif_ext_gpio6_callback_ptr
+                0x000000002400d41c                norm_params
+                0x000000002400d450                ioif_ext_gpio7_callback_ptr
+                0x000000002400d454                ioif_tim7_callback_ptr
+                0x000000002400d458                imu_ctrl_task
+ COMMON         0x000000002400d520       0x98 ./Core/Src/tim.o
+                0x000000002400d520                htim3
+                0x000000002400d56c                htim6
+ COMMON         0x000000002400d5b8        0x4 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
+                0x000000002400d5b8                uwTick
+ COMMON         0x000000002400d5bc       0x2c ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
+                0x000000002400d5bc                i2c1_tx_buff
+                0x000000002400d5bd                i2c3_tx_buff
+                0x000000002400d5c0                i2c1_rx_buff
+                0x000000002400d5d4                i2c3_rx_buff
+ COMMON         0x000000002400d5e8       0x28 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
+                0x000000002400d5e8                test_dummy
+ COMMON         0x000000002400d610        0x9 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(lib_a-lock.o)
+                0x000000002400d610                __lock___atexit_recursive_mutex
+                0x000000002400d611                __lock___arc4random_mutex
+                0x000000002400d612                __lock___env_recursive_mutex
+                0x000000002400d613                __lock___sinit_recursive_mutex
+                0x000000002400d614                __lock___malloc_recursive_mutex
+                0x000000002400d615                __lock___at_quick_exit_mutex
+                0x000000002400d616                __lock___dd_hash_mutex
+                0x000000002400d617                __lock___tz_mutex
+                0x000000002400d618                __lock___sfp_recursive_mutex
+ *fill*         0x000000002400d619        0x3 
+ COMMON         0x000000002400d61c        0x4 c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libc_nano.a(lib_a-reent.o)
+                0x000000002400d61c                errno
+                0x000000002400d620                . = ALIGN (0x4)
+                0x000000002400d620                _ebss = .
+                0x000000002400d620                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x000000002400d61c      0x604 load address 0x000000000800ef30
+                0x000000002400d620      0x600 load address 0x000000000800ef30
                 0x000000002400d620                . = ALIGN (0x8)
- *fill*         0x000000002400d61c        0x4 
                 [!provide]                        PROVIDE (end = .)
                 0x000000002400d620                PROVIDE (_end = .)
                 0x000000002400d820                . = (. + _Min_Heap_Size)
@@ -9027,44 +9028,44 @@ LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+dp/hard\libm.a
 LOAD c:/st/stm32cubeide_1.8.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346/tools/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+dp/hard\libgcc.a
 
-.debug_info     0x0000000000000000    0x3f03d
+.debug_info     0x0000000000000000    0x3f04e
  .debug_info    0x0000000000000000     0x1ee6 ./Core/Src/fdcan.o
  .debug_info    0x0000000000001ee6     0x1110 ./Core/Src/gpio.o
  .debug_info    0x0000000000002ff6     0x1de0 ./Core/Src/i2c.o
- .debug_info    0x0000000000004dd6     0x41fc ./Core/Src/main.o
- .debug_info    0x0000000000008fd2      0xf3b ./Core/Src/stm32h7xx_hal_msp.o
- .debug_info    0x0000000000009f0d     0x1df9 ./Core/Src/stm32h7xx_it.o
- .debug_info    0x000000000000bd06      0xfa8 ./Core/Src/syscalls.o
- .debug_info    0x000000000000ccae      0xa25 ./Core/Src/sysmem.o
- .debug_info    0x000000000000d6d3     0x1748 ./Core/Src/system_stm32h7xx.o
- .debug_info    0x000000000000ee1b     0x1b0e ./Core/Src/tim.o
- .debug_info    0x0000000000010929       0x22 ./Core/Startup/startup_stm32h750vbtx.o
- .debug_info    0x000000000001094b     0x1f64 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
- .debug_info    0x00000000000128af     0x1bda ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o
- .debug_info    0x0000000000014489     0x3780 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.o
- .debug_info    0x0000000000017c09     0x17bf ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o
- .debug_info    0x00000000000193c8     0x2d91 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o
- .debug_info    0x000000000001c159     0x188f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o
- .debug_info    0x000000000001d9e8     0x1b06 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o
- .debug_info    0x000000000001f4ee     0x192a ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o
- .debug_info    0x0000000000020e18     0x1cc1 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o
- .debug_info    0x0000000000022ad9     0x37a3 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o
- .debug_info    0x000000000002627c     0x2238 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o
- .debug_info    0x00000000000284b4      0xdb2 ./WISL_WIDM/Drivers/BSP/BM1422AGMV/Src/bsp_bm1422agmv.o
- .debug_info    0x0000000000029266     0x109e ./WISL_WIDM/Drivers/BSP/BumbleBee/object_dictionaries.o
- .debug_info    0x000000000002a304      0xdf7 ./WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.o
- .debug_info    0x000000000002b0fb     0x1501 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_3axis_imu.o
- .debug_info    0x000000000002c5fc     0x154f ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o
- .debug_info    0x000000000002db4b     0x14f5 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
- .debug_info    0x000000000002f040     0x1f1f ./WISL_WIDM/Drivers/IOIF/Src/ioif_fdcan.o
- .debug_info    0x0000000000030f5f     0x183e ./WISL_WIDM/Drivers/IOIF/Src/ioif_tim.o
- .debug_info    0x000000000003279d     0x3f79 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/imu_ctrl_task.o
- .debug_info    0x0000000000036716     0x1711 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/widm_calculation.o
- .debug_info    0x0000000000037e27      0xfe2 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_data_object.o
- .debug_info    0x0000000000038e09     0x460d ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
- .debug_info    0x000000000003d416      0xc4d ./WISL_WIDM/Framework/Lib/Src/routine.o
- .debug_info    0x000000000003e063      0x325 ./WISL_WIDM/Framework/Lib/Src/state_machine.o
- .debug_info    0x000000000003e388      0xcb5 ./WISL_WIDM/Framework/Lib/Src/task.o
+ .debug_info    0x0000000000004dd6     0x420d ./Core/Src/main.o
+ .debug_info    0x0000000000008fe3      0xf3b ./Core/Src/stm32h7xx_hal_msp.o
+ .debug_info    0x0000000000009f1e     0x1df9 ./Core/Src/stm32h7xx_it.o
+ .debug_info    0x000000000000bd17      0xfa8 ./Core/Src/syscalls.o
+ .debug_info    0x000000000000ccbf      0xa25 ./Core/Src/sysmem.o
+ .debug_info    0x000000000000d6e4     0x1748 ./Core/Src/system_stm32h7xx.o
+ .debug_info    0x000000000000ee2c     0x1b0e ./Core/Src/tim.o
+ .debug_info    0x000000000001093a       0x22 ./Core/Startup/startup_stm32h750vbtx.o
+ .debug_info    0x000000000001095c     0x1f64 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal.o
+ .debug_info    0x00000000000128c0     0x1bda ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_cortex.o
+ .debug_info    0x000000000001449a     0x3780 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_fdcan.o
+ .debug_info    0x0000000000017c1a     0x17bf ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_gpio.o
+ .debug_info    0x00000000000193d9     0x2d91 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c.o
+ .debug_info    0x000000000001c16a     0x188f ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2c_ex.o
+ .debug_info    0x000000000001d9f9     0x1b06 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_pwr_ex.o
+ .debug_info    0x000000000001f4ff     0x192a ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc.o
+ .debug_info    0x0000000000020e29     0x1cc1 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_rcc_ex.o
+ .debug_info    0x0000000000022aea     0x37a3 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim.o
+ .debug_info    0x000000000002628d     0x2238 ./Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_tim_ex.o
+ .debug_info    0x00000000000284c5      0xdb2 ./WISL_WIDM/Drivers/BSP/BM1422AGMV/Src/bsp_bm1422agmv.o
+ .debug_info    0x0000000000029277     0x109e ./WISL_WIDM/Drivers/BSP/BumbleBee/object_dictionaries.o
+ .debug_info    0x000000000002a315      0xdf7 ./WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.o
+ .debug_info    0x000000000002b10c     0x1501 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_3axis_imu.o
+ .debug_info    0x000000000002c60d     0x154f ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_6axis_imu.o
+ .debug_info    0x000000000002db5c     0x14f5 ./WISL_WIDM/Drivers/IOIF/IOIF_I2C/Src/ioif_i2c_func.o
+ .debug_info    0x000000000002f051     0x1f1f ./WISL_WIDM/Drivers/IOIF/Src/ioif_fdcan.o
+ .debug_info    0x0000000000030f70     0x183e ./WISL_WIDM/Drivers/IOIF/Src/ioif_tim.o
+ .debug_info    0x00000000000327ae     0x3f79 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/imu_ctrl_task.o
+ .debug_info    0x0000000000036727     0x1711 ./WISL_WIDM/Framework/Apps/imu_ctrl_task/widm_calculation.o
+ .debug_info    0x0000000000037e38      0xfe2 ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_data_object.o
+ .debug_info    0x0000000000038e1a     0x460d ./WISL_WIDM/Framework/Apps/msg_hdlr_task/msg_hdlr_task.o
+ .debug_info    0x000000000003d427      0xc4d ./WISL_WIDM/Framework/Lib/Src/routine.o
+ .debug_info    0x000000000003e074      0x325 ./WISL_WIDM/Framework/Lib/Src/state_machine.o
+ .debug_info    0x000000000003e399      0xcb5 ./WISL_WIDM/Framework/Lib/Src/task.o
 
 .debug_abbrev   0x0000000000000000     0x6122
  .debug_abbrev  0x0000000000000000      0x265 ./Core/Src/fdcan.o
