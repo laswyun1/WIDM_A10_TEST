@@ -80,6 +80,7 @@ static void Calculate_Initial_Thigh_Angle(Thigh_Angle_Params* t_thigh_angle_para
             t_init_thigh_angle = t_accumulated_angle / ((float)i);
         }
         else{
+
         	i--;
         	err_chk++;
         }
@@ -438,8 +439,13 @@ void Init_Imu_Ctrl(void)
 	// SDO
 	MSG_COMMON_SDO_CREATE(TASK_ID_IMU)
 
-	Init_6Axis_IMU(&acc_gyro_data);
-	Init_3Axis_IMU(&mag_data);
+	uint8_t err_chk_6axis = 0;
+	uint8_t err_chk_3axis = 0;
+	err_chk_6axis = Init_6Axis_IMU(&acc_gyro_data);
+	err_chk_3axis = Init_3Axis_IMU(&mag_data);
+	if (err_chk_6axis != 0){
+		err_chk = 111;
+	}
 
 	Reset_Parameters();
 	attach_plane = e_LEFT_SAGITAL_DEMO;		// WIDM Attached Plane Selection
