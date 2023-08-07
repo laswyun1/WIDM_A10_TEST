@@ -1,0 +1,6 @@
+../WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.c:13:6:Initialize_ICM	16	static
+../WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.c:20:9:IsDevReady_ICM	24	static
+../WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.c:26:9:Init_ICM	24	static
+../WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.c:32:9:DeInit_ICM	24	static
+../WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.c:39:9:Read_Data_ICM	64	static
+../WISL_WIDM/Drivers/BSP/ICM20608G/Src/bsp_icm20608G.c:64:9:Write_Data_ICM	40	static

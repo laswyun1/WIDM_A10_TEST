@@ -1,0 +1,4 @@
+../WISL_WIDM/Framework/Lib/Src/task.c:12:6:Init_Task	16	static
+../WISL_WIDM/Framework/Lib/Src/task.c:18:6:Run_Task	16	static
+../WISL_WIDM/Framework/Lib/Src/task.c:23:6:Set_Task_State_Entity	16	static
+../WISL_WIDM/Framework/Lib/Src/task.c:34:6:Set_Task_Routine_Entity	16	static
