@@ -9,6 +9,8 @@
 #include "bsp_bm1422agmv.h"
 
 //I2C_HandleTypeDef hi2c2;
+uint8_t I2C2_RxBuff[BM_BUFF_SIZE] __attribute__((section(".I2C2_RxBuff")));
+
 
 void Initialize_BM(BMObject* t_bm_obj)
 {
@@ -41,7 +43,12 @@ uint8_t Read_Data_BM(BMObject* t_bm_obj)
 	uint8_t t_res = 0;
 	uint8_t t_buff[6];
 
-	t_res = HAL_I2C_Mem_Read(t_bm_obj->i2cport, t_bm_obj->addr, BM1422AGMV_DATAX_REG, I2C_MEMADD_SIZE_8BIT, t_buff, 6, BM_I2C_TIMEOUT);
+	//Mem_Read ver//
+//	t_res = HAL_I2C_Mem_Read(t_bm_obj->i2cport, t_bm_obj->addr, BM1422AGMV_DATAX_REG, I2C_MEMADD_SIZE_8BIT, t_buff, 6, BM_I2C_TIMEOUT);
+
+	//DMA ver//
+	t_res = HAL_I2C_Mem_Read_DMA(t_bm_obj->i2cport, t_bm_obj->addr, BM1422AGMV_DATAX_REG, I2C_MEMADD_SIZE_8BIT, I2C2_RxBuff, 6);
+	memcpy(t_buff, I2C2_RxBuff, 6);
 
     int16_t t_magX = (int16_t)(t_buff[0] | t_buff[1] << 8);
     int16_t t_magY = (int16_t)(t_buff[2] | t_buff[3] << 8);
@@ -77,3 +84,5 @@ uint8_t Write_Data_BM(BMObject* t_bm_obj)
 
     return t_res;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

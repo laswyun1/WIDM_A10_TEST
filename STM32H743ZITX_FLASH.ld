@@ -151,6 +151,16 @@ SECTIONS
     __bss_end__ = _ebss;
   } >RAM_D1
 
+  /* Modified */
+  .i2c_sec (NOLOAD) : {
+  . = ABSOLUTE(0x30000000);
+  *(.I2C1_RxBuff)
+    
+  . = ABSOLUTE(0x30002000);
+  *(.I2C2_RxBuff)
+  } >RAM_D2
+
+
   /* User_heap_stack section, used to check that there is enough RAM left */
   ._user_heap_stack :
   {

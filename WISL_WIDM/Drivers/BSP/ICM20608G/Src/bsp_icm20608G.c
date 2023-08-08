@@ -8,6 +8,9 @@
 
 #include "bsp_icm20608G.h"
 
+
+uint8_t I2C1_RxBuff[ICM_BUFF_SIZE] __attribute__((section(".I2C1_RxBuff")));
+
 //I2C_HandleTypeDef hi2c1;
 
 void Initialize_ICM(ICMObject* t_icm_obj)
@@ -40,7 +43,13 @@ uint8_t Read_Data_ICM(ICMObject* t_icm_obj)
 {
 	uint8_t t_res = 0;
 	uint8_t t_buff[14];
-	t_res = HAL_I2C_Mem_Read(t_icm_obj->i2cport, t_icm_obj->addr, ICM20608G_ACCEL_XOUT_H, I2C_MEMADD_SIZE_8BIT, t_buff, 14, ICM_I2C_TIMEOUT);
+
+	//Mem_Read ver//
+//	t_res = HAL_I2C_Mem_Read(t_icm_obj->i2cport, t_icm_obj->addr, ICM20608G_ACCEL_XOUT_H, I2C_MEMADD_SIZE_8BIT, t_buff, 14, ICM_I2C_TIMEOUT);
+
+	//DMA_ver//
+	t_res = HAL_I2C_Mem_Read_DMA(t_icm_obj->i2cport, t_icm_obj->addr, ICM20608G_ACCEL_XOUT_H, I2C_MEMADD_SIZE_8BIT, I2C1_RxBuff, 14);
+	memcpy(t_buff, I2C1_RxBuff, 14);
 
 	int16_t t_Xacc = (int16_t)(t_buff[0]  << 8 | t_buff[1]);
 	int16_t t_Yacc = (int16_t)(t_buff[2]  << 8 | t_buff[3]);
@@ -76,3 +85,7 @@ uint8_t Write_Data_ICM(ICMObject* t_icm_obj)
 
     return t_res;
 }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

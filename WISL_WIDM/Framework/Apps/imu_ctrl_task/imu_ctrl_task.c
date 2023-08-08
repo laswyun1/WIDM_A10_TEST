@@ -374,15 +374,21 @@ MSG_COMMON_SDO_CALLBACK(imu_ctrl_task)
  */
 static void StateOff_Run( )
 {
-	// TODO: I2C Initialization
+	// TODO: I2C Initialization0
+
+
 	i2c_6axis_res = Read_Data_ICM(&icm20608g_obj);
 	i2c_3axis_res = Read_Data_BM(&bm1422agmv_obj);
-//	i2c_6axis_res = Get_Value_6Axis_IMU(&acc_gyro_data);
-//	i2c_3axis_res = Get_Value_3Axis_IMU(&mag_data);
 
 	if (i2c_3axis_res == NO_ERROR && i2c_6axis_res == NO_ERROR){
 		Push_Routine(&imu_ctrl_task.routine, ROUTINE_ID_IMU_TOTAL_FUNCTION);
 		Transition_State(&imu_ctrl_task.state_machine, e_State_Standby);
+	}
+	else{
+		DeInit_ICM(&icm20608g_obj);
+		DeInit_BM(&bm1422agmv_obj);
+		Init_ICM(&icm20608g_obj);
+		Init_BM(&bm1422agmv_obj);
 	}
 
 }
@@ -482,12 +488,13 @@ void Init_Imu_Ctrl(void)
 
 
 	Initial_ICM(&ads);
-	err_chk_icm = IsDevReady_ICM(&icm20608g_obj);
+
 	Initialize_ICM(&icm20608g_obj);
+	err_chk_icm = IsDevReady_ICM(&icm20608g_obj);
 	Write_Data_ICM(&icm20608g_obj);
 
-	err_chk_bm = IsDevReady_BM(&bm1422agmv_obj);
 	Initialize_BM(&bm1422agmv_obj);
+	err_chk_bm = IsDevReady_BM(&bm1422agmv_obj);
 	Write_Data_BM(&bm1422agmv_obj);
 
 	Reset_Parameters();
